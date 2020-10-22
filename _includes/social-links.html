@@ -1,4 +1,14 @@
 <p class="social-links">
+    {% if site.linkedin %}
+    <a href="https://www.linkedin.com/in/{{ site.linkedin }}" target="_blank">
+        {% include icons/linkedin.html %}
+    </a>
+    {% endif %}
+    {% if site.medium %}
+    <a href="https://medium.com/{{ site.medium }}" target="_blank">
+        {% include icons/medium.html %}
+    </a>
+    {% endif %}
     {% if site.twitter %}
     <a href="https://twitter.com/{{ site.twitter }}" target="_blank">
         {% include icons/twitter.html %}
@@ -24,11 +34,6 @@
         {% include icons/dribbble.html %}
     </a>
     {% endif %}
-    {% if site.medium %}
-    <a href="https://medium.com/{{ site.medium }}" target="_blank">
-        {% include icons/medium.html %}
-    </a>
-    {% endif %}
     {% if site.instagram %}
     <a href="https://www.instagram.com/{{ site.instagram }}" target="_blank">
         {% include icons/instagram.html %}
@@ -37,11 +42,6 @@
     {% if site.pinterest %}
     <a href="https://www.pinterest.com/{{ site.pinterest }}" target="_blank">
         {% include icons/pinterest.html %}
-    </a>
-    {% endif %}
-    {% if site.linkedin %}
-    <a href="https://www.linkedin.com/in/{{ site.linkedin }}" target="_blank">
-        {% include icons/linkedin.html %}
     </a>
     {% endif %}
     {% if site.producthunt %}
