@@ -16,8 +16,9 @@ mailchimp_url: '//mccarthysean.us3.list-manage.com/subscribe/post?u=78f1bab16028
 ga_analytics: 
 
 # Contact form setings
+# "Horace theme comes with a contact form built-in. You can use this form with Formspree service and get up to 50 submissions for free. Also, you can easily switch to another service if you want."
 email: sean.mccarthy@live.ca
-contact_page_description: "Horace theme comes with a contact form built-in. You can use this form with Formspree service and get up to 50 submissions for free. Also, you can easily switch to another service if you want."
+contact_page_description: 
 thankyou_page_description: "Your message has been sent successfully. We will contact you very soon!"
 
 # Social links
