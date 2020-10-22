@@ -1,12 +1,12 @@
 # Site setings
-name: 'McCarthySean'
+name: 'Sean McCarthy'
 description: "Always Learning"
 meta_description: "Sean McCarthy's thoughts and advice on software development, data science, economics, public policy, and finance."
 logo:
 # Author image is used in site sidebar and greetings in the home page hero text
 author:
   image: 'authorimage.jpg'
-  greetings: "Hi there! My name is Charles Lavoie. I'm a freelance web developer, author and speaker based in Montreal, Canada. It’s nice to meet you."
+  greetings: "Hi there! My name is Sean McCarthy. I'm Chief Data Scientist at IJACK Technologies Inc"
 favicon: 'assets/images/favicon.ico'
 baseurl: 
 production_url: https://mccarthysean.dev/
