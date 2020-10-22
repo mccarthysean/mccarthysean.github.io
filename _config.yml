@@ -1,6 +1,6 @@
 # Site setings
 name: 'Sean McCarthy'
-description: "Always Learning"
+description: "Data Scientist"
 meta_description: "Sean McCarthy's thoughts and advice on software development, data science, economics, public policy, and finance."
 logo:
 # Author image is used in site sidebar and greetings in the home page hero text
@@ -18,20 +18,20 @@ ga_analytics:
 # Contact form setings
 email: sean.mccarthy@live.ca
 contact_page_description: "Horace theme comes with a contact form built-in. You can use this form with Formspree service and get up to 50 submissions for free. Also, you can easily switch to another service if you want."
-thankyou_page_description: "Your message has been successfully sent. We will contact you very soon!"
+thankyou_page_description: "Your message has been sent successfully. We will contact you very soon!"
 
 # Social links
+linkedin: 'seanmccarthy2'
 twitter: 'mccarthysean'
-facebook: 'mccarthysean'
-github: 'mccarthysean'
-codepen: 'mccarthysean'
-dribbble: 'mccarthysean'
-medium: '@mccarthysean'
+facebook: 'sean.mccarth'
 instagram: 'mccarthysean'
-pinterest: 'mccarthysean'
-linkedin: 'mccarthysean'
-producthunt: '@mccarthysean'
-quora: 'mccarthysean'
+github: 'mccarthysean'
+# codepen: 'mccarthysean'
+# dribbble: 'mccarthysean'
+medium: '@mccarthysean'
+# pinterest: 'mccarthysean'
+# producthunt: '@mccarthysean'
+quora: 'Sean-McCarthy-64'
 
 # Navigation
 navigation:
