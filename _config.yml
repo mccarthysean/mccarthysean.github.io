@@ -1,7 +1,7 @@
 # Site setings
 name: 'McCarthySean'
-description: 'Always Learning'
-meta_description: 'Sean McCarthy's thoughts and advice on software development, data science, economics, public policy, and finance.'
+description: "Always Learning"
+meta_description: "Sean McCarthy's thoughts and advice on software development, data science, economics, public policy, and finance."
 logo:
 # Author image is used in site sidebar and greetings in the home page hero text
 author:
