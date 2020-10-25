@@ -6,7 +6,7 @@ logo:
 # Author image is used in site sidebar and greetings in the home page hero text
 author:
   image: 'authorimage.jpg'
-  # greetings: "Hi there! My name is Sean McCarthy. I'm Chief Data Scientist at IJACK Technologies Inc"
+  greetings: "Hi there. My name is Sean McCarthy and I'm Chief Data Scientist at IJACK Technologies Inc. Welcome to my blog on software development and data science."
 favicon: 'assets/images/favicon.ico'
 baseurl: 
 production_url: https://mccarthysean.dev/
