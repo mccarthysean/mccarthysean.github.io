@@ -1,0 +1,7 @@
+
+FROM jekyll/jekyll
+
+# # Copy my preferred .bashrc to /root/ so that it's automatically "sourced" when the container starts
+# # This doesn't work in Alpine "Ash", only on Debian/Ubuntu Bash
+# COPY .bashrc /root/
+
