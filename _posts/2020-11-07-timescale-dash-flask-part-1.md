@@ -145,11 +145,11 @@ docker-compose -f docker-compose.pgadmin.yml up -d
 Run `docker container ls` again to check if the PGAdmin container is running. Note we specified a port of 9000, so you can now access PGAdmin at http://localhost:9000 or http://127.0.0.1:9000 . Login with the username and password you setup in your `.env` file. 
 
 Now that you've logged into PGAdmin, right-click on "Servers" and "Create/Server...". Name it "TimescaleDB Local" in the "General" tab, and type the following into the "Connection" tab:
-* Host: timescale (this is the Docker "Service" hostname defined in the first docker-compose.yml file for the TimescaleDB database container)
-* Port: 5432
-* Maintenance database: postgres
-* Username: postgres
-* Password: password
+* **Host**: timescale (this is the Docker "Service" hostname defined in the first docker-compose.yml file for the TimescaleDB database container)
+* **Port**: 5432
+* **Maintenance database**: postgres
+* **Username**: postgres
+* **Password**: password
 
 Click "Save" and you should be connected. Now you can double-click on "TimescaleDB Local" and you can access your database tables at "/Databases/postgres/Schemas/public/Tables". Pretty cool, huh? Under the "Tools" menu, click on "Query Tool" and you're ready to start writing SQL. 
 
