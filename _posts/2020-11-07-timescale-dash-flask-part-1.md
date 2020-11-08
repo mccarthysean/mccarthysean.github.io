@@ -16,7 +16,7 @@ The second part will focus on setting up a Python Flask website that integrates 
 
 The third part will focus on using Dash to create interactive time series charts for monitoring your IoT data or showcasing your data science application. 
 
-All the code for this tutorial can be found [here](https://github.com/mccarthysean/Flask-Dash-Plotly-TimescaleDB-Docker-Swarm-Traefik) at GitHub. 
+All the code for this tutorial can be found [here](https://github.com/mccarthysean/TimescaleDB-Dash-Flask) at GitHub. 
 
 I use Docker wherever possible, for reproducible environments, and super-easy deployment using Docker Swarm, so if you're not familiar with Docker, check out the documentation [here](https://docs.docker.com/). 
 
