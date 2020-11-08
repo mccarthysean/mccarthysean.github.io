@@ -48,7 +48,7 @@ services:
       POSTGRES_HOST: timescale
     command: ["-c", "config_file=/postgresql_custom.conf"]
     ports: 
-      - 5432:5432
+      - 0.0.0.0:5432:5432
     networks:
       timescale_network:
     deploy:
@@ -154,6 +154,7 @@ CREATE TABLE sensors(
   type VARCHAR(50),
   location VARCHAR(50)
 );
+
 CREATE TABLE sensor_data (
   time TIMESTAMPTZ NOT NULL,
   sensor_id INTEGER,
