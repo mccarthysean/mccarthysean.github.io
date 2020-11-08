@@ -221,6 +221,32 @@ ORDER BY
   time_bucket('1 hour', time);
 ```
 
+From the official TimescaleDB tutorial, let's showcase two more queries. First, instead of a time series history, you might just want the *latest* data. For that, you can use the "last()" function:
+```sql
+SELECT 
+  time_bucket('30 minutes', time) AS period, 
+  AVG(temperature) AS avg_temp, 
+  last(temperature, time) AS last_temp --the latest value
+FROM sensor_data 
+GROUP BY period;
+```
+
+And of course, you'll often want to join the time series data with the *metadata* (i.e. data about data). In other words, let's get a location for each sensor, rather than a sensor ID:
+```sql
+SELECT 
+  t2.location, --from the second metadata table
+  time_bucket('30 minutes', time) AS period, 
+  AVG(temperature) AS avg_temp, 
+  last(temperature, time) AS last_temp, 
+  AVG(cpu) AS avg_cpu 
+FROM sensor_data t1 
+INNER JOIN sensors t2 
+  on t1.sensor_id = t2.id
+GROUP BY 
+  period, 
+  t2.location;
+```
+
 TimescaleDB has another very useful feature for continually and efficiently updating aggregated views of our time series data. If you often want to report/chart aggregated data, the following view-creation code is for you:
 ```sql
 CREATE VIEW sensor_data_1_hour_view
