@@ -1,4 +1,4 @@
-If you're curious how I built [mccarthysean.dev](https://mccarthysean.dev), here's all the source code. 
+If you're curious how I built my blog at [mccarthysean.dev](https://mccarthysean.dev), you've found the source code!
 
 I'm using GitHub Pages and Jekyll, which makes things incredibly simple. Here's where I found the theme:
 
