@@ -6,6 +6,11 @@ featured_image_thumbnail:
 featured_image: assets/images/posts/2020/dog-computer.jpg
 featured: true
 hidden: false
+# custom-css-list:
+#   - https://myCDN.com/prism@v1.x/themes/prism.css
+# custom-javascript-list:
+#   - https://myCDN.com/prism@v1.x/components/prism-core.min.js
+#   - https://myCDN.com/prism@v1.x/plugins/autoloader/prism-autoloader.min.js
 ---
 
 In this three-part tutorial, I'll show you how to create a reactive single-page application entirely in Python, featuring dynamic time series charts from Dash/Plotly, on a Flask website with a specialized time series database called TimescaleDB, which itself is based on PostgreSQL. Quite a mouthful, but this is a pretty cool tech stack that is easy to learn and program, as it only uses Python and regular SQL (no JavaScript). So it's an ideal stack for quickly deploying data science applications. 
@@ -26,6 +31,7 @@ First, let's create a Docker network so our forthcoming containers can talk to e
 ```bash
 docker network create --attachable --driver bridge timescale_network
 ```
+
 Next, let's start a local TimescaleDB database using Docker-Compose. This will quickly start a local PostgreSQL database with the TimescaleDB extension automatically configured. Create the following `docker-compose.timescale.yml` file:
 ```yaml
 version: '3.7'
@@ -63,6 +69,7 @@ networks:
   timescale_network:
     external: true
 ```
+
 Note a few things about the above Docker-Compose file:
 
 1. It uses the `timescale_network` we created in the previous step. 
@@ -90,6 +97,7 @@ Now that we've added the custom configuration and .env files, you can start the 
 ```bash
 docker-compose -f docker-compose.timescale.yml up -d
 ```
+
 Check your running containers with `docker container ls` or the old-school `docker ps`. If the container is restarting, check the logs with `docker logs <container id>` and ensure you've setup the .env file, the config file, and the Docker network it depends on.
 
 Finally, let's create a friendly PGAdmin environment for administering our database and running SQL. Create a file called `docker-compose.pgadmin.yml` and add the following:
@@ -265,5 +273,5 @@ GROUP BY
 
 That's it for part 1 of this three-part tutorial on TimescaleDB, Dash, and Flask. Stay tuned for part 2 on integrating Dash and Flask, and part 3 on creating reactive, interactive time series charts in Dash for your single-page application (SPA).
 
-Stay healthy,
+Stay healthy,<br>
 Sean
