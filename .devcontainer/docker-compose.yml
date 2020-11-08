@@ -16,5 +16,5 @@ services:
     ports:
       - 0.0.0.0:4000:4000
     # Overrides default command so things don't shut down after the process ends.
-    # command: sleep infinity 
-    command: jekyll serve
+    command: sleep infinity 
+    # command: jekyll serve
