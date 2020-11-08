@@ -6,11 +6,6 @@ featured_image_thumbnail:
 featured_image: assets/images/posts/2020/dog-computer.jpg
 featured: true
 hidden: false
-# custom-css-list:
-#   - https://myCDN.com/prism@v1.x/themes/prism.css
-# custom-javascript-list:
-#   - https://myCDN.com/prism@v1.x/components/prism-core.min.js
-#   - https://myCDN.com/prism@v1.x/plugins/autoloader/prism-autoloader.min.js
 ---
 
 In this three-part tutorial, I'll show you how to create a reactive single-page application entirely in Python, featuring dynamic time series charts from Dash/Plotly, on a Flask website with a specialized time series database called TimescaleDB, which itself is based on PostgreSQL. Quite a mouthful, but this is a pretty cool tech stack that is easy to learn and program, as it only uses Python and regular SQL (no JavaScript). So it's an ideal stack for quickly deploying data science applications. 
@@ -34,6 +29,8 @@ docker network create --attachable --driver bridge timescale_network
 
 Next, let's start a local TimescaleDB database using Docker-Compose. This will quickly start a local PostgreSQL database with the TimescaleDB extension automatically configured. Create the following `docker-compose.timescale.yml` file:
 ```yaml
+# docker-compose.timescale.yml
+
 version: '3.7'
 services:
   timescale:
@@ -65,6 +62,7 @@ services:
 volumes:
   timescale_volume:
 
+# Joins our external network
 networks:
   timescale_network:
     external: true
@@ -84,6 +82,8 @@ Here's the custom configuration file, in case you want/need to change any of the
 
 Next, here's a template for our secret `.env` file, which you can leave in the root of your project folder, alongside the Docker-Compose and database configuration files:
 ```bash
+# .env
+
 # For the Postgres/TimescaleDB database. 
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=password
@@ -102,6 +102,8 @@ Check your running containers with `docker container ls` or the old-school `dock
 
 Finally, let's create a friendly PGAdmin environment for administering our database and running SQL. Create a file called `docker-compose.pgadmin.yml` and add the following:
 ```yaml
+# docker-compose.pgadmin.yml
+
 version: '3.7'
 services:
   pgadmin:
@@ -128,6 +130,8 @@ networks:
 
 Add the following lines to your `.env` file for PGAdmin. You'll need this login information when you try to access PGAdmin in the web browser. 
 ```bash
+# .env
+
 # For the PGAdmin web app
 PGADMIN_DEFAULT_EMAIL=your@email.com
 PGADMIN_DEFAULT_PASSWORD=password
