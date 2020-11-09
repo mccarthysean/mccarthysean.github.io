@@ -87,9 +87,9 @@ Next, here's a template for our secret `.env` file, which you can leave in the r
 # For the Postgres/TimescaleDB database. 
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=password
-POSTGRES_HOST=localhost
+POSTGRES_HOST=timescale
 POSTGRES_PORT=5432
-POSTGRES_DB=timescale
+POSTGRES_DB=postgres
 PGDATA=/var/lib/postgresql/data
 ```
 
