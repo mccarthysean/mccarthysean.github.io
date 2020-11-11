@@ -12,7 +12,7 @@ In this three-part tutorial, I'll show you how to create a reactive single-page 
 
 The first part of the tutorial will focus on using Docker to setup the specialized TimescaleDB database, and PGAdmin for managing it. We'll create some simulated IoT data and showcase some of the cool features of TimescaleDB, which you won't find with ordinary PostgreSQL.
 
-The second part will focus on setting up a Python Flask website that integrates with the amazing Dash library for creating React JavaScript-based single-page applications (SPA). I'll show you how to properly integrate Dash into Flask, so you can have the best of both web frameworks.
+The [second part]({% post_url 2020-11-08-timescale-dash-flask-part-2 %}) will focus on setting up a Python Flask website that integrates with the amazing Dash library for creating React JavaScript-based single-page applications (SPA). I'll show you how to properly integrate Dash into Flask, so you can have the best of both web frameworks.
 
 The third part will focus on using Dash to create interactive time series charts for monitoring your IoT data or showcasing your data science application. 
 
@@ -280,7 +280,7 @@ GROUP BY
   time_bucket('01:00:00'::interval, sensor_data.time)
 ```
 
-That's it for part 1 of this three-part tutorial on TimescaleDB, Dash, and Flask. Stay tuned for part 2 on integrating Dash and Flask, and part 3 on creating reactive, interactive time series charts in Dash for your single-page application (SPA).
+That's it for part 1 of this three-part tutorial on TimescaleDB, Dash, and Flask. Here's [part 2]({% post_url 2020-11-08-timescale-dash-flask-part-2 %}) on integrating Dash and Flask. Part 3 will focus on creating reactive, interactive time series charts in Dash for your single-page application (SPA).
 
 Stay healthy,<br>
 Sean
