@@ -39,7 +39,8 @@ services:
       - type: volume
         # source: timescale-db # the volume name
         source: timescale_volume
-        target: /var/lib/postgresql/data # the location in the container where the data are stored
+        # target: the location in the container where the data are stored
+        target: /var/lib/postgresql/data 
         read_only: false
       # Custom postgresql.conf file will be mounted (see command: as well)
       - type: bind
@@ -71,12 +72,9 @@ networks:
 Note a few things about the above Docker-Compose file:
 
 1. It uses the `timescale_network` we created in the previous step. 
-
 2. It uses a volume to persist the database's data, even if the Docker container is removed or replaced. This is very common for 'Dockerized' databases. 
-
 3. It uses port 5432 (this will be important when we try to access the database in the future). 
-
-4. It uses a custom configuration file, and a `.env` file to store secret database connection information, like your database password. Let's create those two files:
+4. It uses a custom configuration file, and a `.env` file to store secret database connection information, like your database password. Let's create those two files next.
 
 Here's the custom configuration file, in case you want/need to change any of these settings in the future. The file is too long to put in a code block in this article, so just click <a href="/assets/files/posts/2020/postgresql_custom.conf">this link</a>, then copy and paste the text into a file called `postgresql_custom.conf` and put it in the root of your project folder.
 
@@ -120,6 +118,7 @@ services:
       - pgadmin:/var/lib/pgadmin
     networks:
       timescale_network:
+
 volumes:
   pgadmin:
 
@@ -142,7 +141,7 @@ Start the PGAdmin (PostgreSQL Admin) web application with the following Docker c
 docker-compose -f docker-compose.pgadmin.yml up -d
 ```
 
-Run `docker container ls` again to check if the PGAdmin container is running. Note we specified a port of 9000, so you can now access PGAdmin at http://localhost:9000 or http://127.0.0.1:9000 . Login with the username and password you setup in your `.env` file. 
+Run `docker container ls` again to check if the PGAdmin container is running. Note we specified a port of 9000, so you can now access PGAdmin at [http://localhost:9000](http://localhost:9000) or [http://127.0.0.1:9000](http://127.0.0.1:9000). Login with the username and password you setup in your `.env` file. 
 
 Now that you've logged into PGAdmin, right-click on "Servers" and "Create/Server...". Name it "TimescaleDB Local" in the "General" tab, and type the following into the "Connection" tab:
 * **Host**: timescale (this is the Docker "Service" hostname defined in the first docker-compose.yml file for the TimescaleDB database container)
@@ -176,11 +175,11 @@ CREATE TABLE sensor_data (
 );
 ```
 
-Now the the special part that you can't do in a regular PostgreSQL database. We're going to transform the `sensor_data` table into a "Hypertable". Behind the scenes, TimescaleDB is going to partition the data on the time dimension, making it easier to filter, index, and drop old time series data. 
+Now the special part that you can't do in a regular PostgreSQL database. We're going to transform the `sensor_data` table into a "Hypertable". Behind the scenes, TimescaleDB is going to partition the data on the time dimension, making it easier to filter, index, and drop old time series data. 
 
-If you've come to this tutorial to take advantage of TimescaleDB's unique features, pay attention because this is where the magic happens.
+If you've come to this tutorial to take advantage of TimescaleDB's unique features, the following is where the magic happens.
 
-Run the following query in PGAdmin to create the partitioned hypertable:
+Run the following query in PGAdmin to create the hypertable, automatically partitioned on the "time" dimension:
 ```sql
 SELECT create_hypertable('sensor_data', 'time');
 ```
@@ -193,21 +192,27 @@ create index on sensor_data (sensor_id, time desc);
 Let's now add a few different sensors to the "sensors" table:
 ```sql
 INSERT INTO sensors (type, location) VALUES
-('a','floor'),
-('a', 'ceiling'),
-('b','floor'),
-('b', 'ceiling');
+  ('a','floor'),
+  ('a', 'ceiling'),
+  ('b','floor'),
+  ('b', 'ceiling');
 ```
 
 Now for the fun part--let's create some simulated time series data:
 ```sql
-INSERT INTO sensor_data (time, sensor_id, cpu, temperature)
+INSERT INTO sensor_data 
+  (time, sensor_id, cpu, temperature)
 SELECT
   time,
   sensor_id,
   random() AS cpu,
   random()*100 AS temperature
-FROM generate_series(now() - interval '31 days', now(), interval '5 minute') AS g1(time), generate_series(1,4,1) AS g2(sensor_id);
+FROM 
+  generate_series(
+    now() - interval '31 days', 
+    now(), interval '5 minute'
+  ) AS g1(time), 
+  generate_series(1,4,1) AS g2(sensor_id);
 ```
 
 Run a simple select query to see some of our newly-simulated data:
@@ -260,7 +265,7 @@ GROUP BY
   t2.location;
 ```
 
-TimescaleDB has another very useful feature for continually and efficiently updating aggregated views of our time series data. If you often want to report/chart aggregated data, the following view-creation code is for you:
+TimescaleDB has another very useful feature called "continuous aggregates" for continually and efficiently updating aggregated views of our time series data. If you often want to report/chart aggregated data, the following view-creation code is for you:
 ```sql
 CREATE VIEW sensor_data_1_hour_view
 WITH (timescaledb.continuous) AS --TimescaleDB continuous aggregate
@@ -272,7 +277,7 @@ SELECT
 FROM sensor_data
 GROUP BY 
   sensor_id,
-  time_bucket('01:00:00'::interval, sensor_data.time) AS time
+  time_bucket('01:00:00'::interval, sensor_data.time)
 ```
 
 That's it for part 1 of this three-part tutorial on TimescaleDB, Dash, and Flask. Stay tuned for part 2 on integrating Dash and Flask, and part 3 on creating reactive, interactive time series charts in Dash for your single-page application (SPA).
