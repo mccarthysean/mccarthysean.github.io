@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Time Series Charts with Dash, Flask, TimescaleDB, and Docker - Part 2'
-tags: [Python, TimescaleDB, Dash, Flask, Docker]
+tags: [Python, TimescaleDB, Dash, Flask]
 featured_image_thumbnail:
 featured_image: assets/images/posts/2020/python-code-chris-ried-ieic5Tq8YMk-unsplash.jpg
 featured: true
@@ -26,7 +26,7 @@ All the code for this tutorial can be found [here](https://github.com/mccarthyse
 
 Before we can get started with Python, we always have to create a dedicated Python3 virtual environment. Let's just use `python3 -m venv venv` to create a virtual environment called "venv" in our root project folder. These days I prefer using [Poetry](https://python-poetry.org/) to [Pip](https://pypi.org/project/pip/), but Poetry is not the focus of this article. Now activate the virtual environment with `source venv/bin/activate` on Linux/Mac, or `venv\Scripts\activate.bat` on Windows. Once you've activated the virtual environment, install Flask, Dash, Dash Bootstrap Components, and the PostgreSQL library psycopg2, with `pip install flask dash dash-bootstrap-components psycopg2-binary`.
 
-As an aside, I actually run Windows 10 Pro, as many data scientists do, especially those who come from the business world. So I actually use VS Code as my IDE, and I actually code inside a Linux Docker container in VS Code. Check out the documentation for that [here](https://code.visualstudio.com/docs/remote/containers), but once again, that's not the focus of this article.
+As an aside, I actually run Windows 10 Pro, as many data scientists do, especially those who come from the business world. So I use VS Code as my IDE, and I code inside a Linux Docker container in VS Code. Check out the documentation for that [here](https://code.visualstudio.com/docs/remote/containers), but once again, that's not the focus of this article.
 
 To create a Flask application, let's start from the outermost entrypoint, or the starting point for the application. In your top-level folder, create a `wsgi.py` file as follows. This is best practice using the `factory pattern` for initializing Flask.
 
@@ -121,6 +121,18 @@ def create_app():
     def home():
         """Our only non-Dash route, to demonstrate that Flask can be used normally"""
         return render_template('index.html')
+```
+
+Create a `/app/templates` folder for HTML templates and add an `index.html` file with the following contents for the homepage route:
+
+```html
+<html>
+    <body>
+        <h1 style="text-align: center;">
+            Click <a href="/dash/">here</a> to see the Dash single-page application (SPA)
+        </h1>
+    </body>
+</html>
 ```
 
 Next up, we initialize our database stuff with `database.init_app(app)`. "database" is a local module we imported at the top, so we'll deal with that next.
@@ -367,7 +379,7 @@ Create a "dashapp" folder inside your "app" folder, containing three new files:
 
 Don't worry about the `__init__.py` file--it's just there so Python (and you) know the folder is part of the package. 
 
-Part 3 will go into more depth on the Dash layout and callbacks, so for now let's just setup the basics. 
+[Part 3]({% post_url 2020-11-11-timescale-dash-flask-part-3 %}) goes into more depth on the Dash layout and callbacks, so for now let's just setup the basics. 
 
 First, `layout.py`, which for now will just contain a Bootstrap navigation bar inside a Bootstrap container:
 
@@ -439,7 +451,7 @@ The `get_layout()` function is called from our `dash_setup.py` module, like this
 
 I won't explain the `get_navbar()` function because I think it's self-explanatory, but [here's](https://dash-bootstrap-components.opensource.faculty.ai/docs/components/navbar/) the documentation.
 
-The Dash callbacks are the focus of Part 3 of this series, so for now let's just fill the `callbacks.py` file with this:
+The Dash callbacks are the focus of [Part 3]({% post_url 2020-11-11-timescale-dash-flask-part-3 %}) of this series, so for now let's just fill the `callbacks.py` file with this:
 
 ```python
 # /app/dashapp/callbacks.py
@@ -456,9 +468,9 @@ def register_callbacks(dash_app):
     return None
 ```
 
-If you want to read more about Dash layout and callbacks, before Part 3, check out the documentation [here](https://dash.plotly.com/layout).
+If you want to read more about Dash layout and callbacks, before [Part 3]({% post_url 2020-11-11-timescale-dash-flask-part-3 %}), check out the documentation [here](https://dash.plotly.com/layout).
 
-That's it for Part 2. I hope you've enjoyed it so far. Stay tuned for Part 3 shortly!
+That's it for Part 2. I hope you've enjoyed it so far. Check out [Part 3]({% post_url 2020-11-11-timescale-dash-flask-part-3 %}) for a deep dive into Dash callbacks and [Plotly](https://plotly.com/python/) charting.
 
 Cheers,<br>
 Sean

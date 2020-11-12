@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Time Series Charts with Dash, Flask, TimescaleDB, and Docker - Part 1'
-tags: [Python, TimescaleDB, Dash, Flask, Docker]
+tags: [TimescaleDB, PGAdmin, Docker]
 featured_image_thumbnail:
 featured_image: assets/images/posts/2020/dog-computer.jpg
 featured: true
