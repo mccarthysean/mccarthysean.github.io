@@ -5,7 +5,7 @@ tags: [Python, TimescaleDB, Dash, Flask]
 featured_image_thumbnail:
 featured_image: assets/images/posts/2020/python-code-chris-ried-ieic5Tq8YMk-unsplash.jpg
 featured: true
-hidden: false
+hidden: true
 ---
 
 This is the second of three articles on TimescaleDB, Flask, and Dash. The [first article]({% post_url 2020-11-07-timescale-dash-flask-part-1 %}) focused on getting the [TimescaleDB](https://www.timescale.com/) database running with [Docker](https://www.docker.com/), along with [PGAdmin](https://www.pgadmin.org/) for administering it. This article focuses on the Python language, creating a [Flask](https://flask.palletsprojects.com/) website and then integrating the [Dash](https://plotly.com/dash/) web framework into Flask. 

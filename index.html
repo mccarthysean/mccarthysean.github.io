@@ -14,9 +14,9 @@ title: Home
 <!-- Featured-->
 <div id="featured-posts" class="featured-posts">
     {% for post in site.posts %}
-    {% if post.featured == true %}
-    {% include featuredbox.html %}
-    {% endif %}
+        {% if post.featured == true %}
+            {% include featuredbox.html %}
+        {% endif %}
     {% endfor %}
 </div>
 
@@ -25,7 +25,7 @@ title: Home
 <!-- Posts Index -->
 <div class="post-feed inner">
     {% if page.url == "/" %}
-    <div class="post-feed-title">Latest Articles</div>
+        <div class="post-feed-title">Latest Articles</div>
     {% endif %}
     <div class="post-feed inner-wide">
         {% for post in paginator.posts %}
