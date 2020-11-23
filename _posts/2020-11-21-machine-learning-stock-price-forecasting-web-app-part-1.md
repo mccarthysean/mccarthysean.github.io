@@ -210,7 +210,7 @@ Before we can get started with Python, we always have to create a dedicated Pyth
 
 These days I prefer using [Poetry](https://python-poetry.org/) to [Pip](https://pypi.org/project/pip/), but Poetry is not the focus of this article. 
 
-Activate the virtual environment with `source venv/bin/activate` on Linux/Mac, or `venv\Scripts\activate.bat` on Windows. Once you've activated the virtual environment, install a bunch of libraries we'll be using in this course with `pip install psycopg2-binary yfinance pandas flask dash dash-bootstrap-components`.
+Activate the virtual environment with `source venv/bin/activate` on Linux/Mac, or `venv\Scripts\activate.bat` on Windows. Once you've activated the virtual environment, install a bunch of libraries we'll be using in this course with `pip install python-dotenv psycopg2-binary yfinance pandas scikit-learn flask dash dash-bootstrap-components`.
 
 As an aside, I actually run Windows 10 Pro, as many data scientists do, especially those who come from the business world. So I use VS Code as my IDE, and I code inside a Linux Docker container in VS Code. Check out the documentation for that [here](https://code.visualstudio.com/docs/remote/containers), but once again, that's not the focus of this course.
 
