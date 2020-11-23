@@ -10,7 +10,6 @@ favicon: 'assets/images/favicon.ico'
 baseurl: 
 production_url: https://mccarthysean.dev/
 disqus: 'mccarthysean'
-# mailchimp_url: 'https://myijack.us2.list-manage.com/subscribe/post?u=b4916eae2ad7cb10f5e629692&amp;id=3d9f3efd20'
 mailchimp_url: 'https://dev.us2.list-manage.com/subscribe/post?u=b4916eae2ad7cb10f5e629692&amp;id=3d9f3efd20'
 # Add your GA Tracking Id
 ga_analytics: 'G-Z6DZ02583Q'
@@ -23,11 +22,11 @@ thankyou_page_description: "Your message has been sent successfully. We will con
 
 # Social links
 linkedin: 'seanmccarthy2'
-medium: '@mccarthysean'
-twitter: 'mccarthysean'
 github: 'mccarthysean'
+twitter: 'mccarthysean'
 facebook: 'sean.mccarth'
 instagram: 'mccarthysean'
+medium: '@mccarthysean'
 # codepen: 'mccarthysean'
 # dribbble: 'mccarthysean'
 # pinterest: 'mccarthysean'
