@@ -3,7 +3,7 @@ layout: post
 title: 'Update TimescaleDB Extension with Docker'
 tags: [TimescaleDB, Docker, PostgreSQL, Linux, psql]
 featured_image_thumbnail:
-featured_image: assets/images/posts/2021/timescaledb-logo.png
+featured_image: assets/images/posts/2021/timescaledb-logo2.png
 featured: true
 hidden: true
 ---
