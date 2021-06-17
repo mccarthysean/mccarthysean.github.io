@@ -17,6 +17,8 @@ ERROR:  could not access file "$libdir/timescaledb-1.6.0": No such file or direc
 
 Here are the [official instructions](https://docs.timescale.com/timescaledb/latest/how-to-guides/update-timescaledb/updating-docker/#updating-a-timescaledb-docker-installation) for updating the TimescaleDB extension.
 
+Here's a super-helpful [StackOverflow answer](https://stackoverflow.com/a/57556005/3385948).
+
 First ensure you've got the latest Docker image installed:
 ```shell
 docker pull timescale/timescaledb:latest-pg12
@@ -83,7 +85,7 @@ Connect to the running Docker container and start psql immediately:
 docker exec -it <container> psql -X -U postgres
 ```
  
-Connect to the database you want to update (e.g. for a DB called "mydb") to update its TimescaleDB extension. **This step was missing in the official documentation.**
+Connect to the database you want to update (e.g. for a DB called "mydb") to update its TimescaleDB extension. **This step was missing in the [official documentation](https://docs.timescale.com/timescaledb/latest/how-to-guides/update-timescaledb/updating-docker/#updating-a-timescaledb-docker-installation).**
 ```sql
 postgres=# \c mydb
 You are now connected to database "mydb" as user "postgres".
