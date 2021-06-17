@@ -84,7 +84,7 @@ Connect to the running Docker container and start psql immediately:
 ```shell
 docker exec -it <container> psql -X -U postgres
 ```
- 
+
 Connect to the database you want to update (e.g. for a DB called "mydb") to update its TimescaleDB extension. **This step was missing in the [official documentation](https://docs.timescale.com/timescaledb/latest/how-to-guides/update-timescaledb/updating-docker/#updating-a-timescaledb-docker-installation).**
 ```sql
 postgres=# \c mydb
