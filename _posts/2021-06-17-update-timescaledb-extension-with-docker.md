@@ -89,6 +89,11 @@ postgres=# \c mydb
 You are now connected to database "mydb" as user "postgres".
 ```
 
+Alternately, connect directly to the chosen database *on startup*:
+```shell
+docker exec -it <container> psql -X -U postgres -d mydb
+```
+
 Update the extension:
 ```sql
 mydb=# ALTER EXTENSION timescaledb UPDATE;
