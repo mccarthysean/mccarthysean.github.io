@@ -14,7 +14,7 @@ This second post is about how I managed to upgrade PostreSQL to v13 from v11 whi
 
 Here are the [official instructions](https://docs.timescale.com/timescaledb/latest/how-to-guides/update-timescaledb/upgrade-postgresql/) for upgrading PostgreSQL. All they tell you is to use pg_upgrade. However, that's got its own complications, and I didn't want the database to be down for any length of time, so instead I backed up our existing database, then created a new PostgreSQL 13 database with a new Docker volume, and restored the backup to the new database. Following are my steps.
 
-Here's a [link]({% post_url 2021-06-17-backup-restore-timescaledb-database.md %}) to my previous post on how to automatically backup a TimescaleDB database each night to an AWS S3 bucket, using a custom Docker image I created. Follow those steps to create a backup in an AWS S3 bucket.
+Here's a [link]({% post_url 2021-06-17-backup-restore-timescaledb-database %}) to my previous post on how to automatically backup a TimescaleDB database each night to an AWS S3 bucket, using a custom Docker image I created. Follow those steps to create a backup in an AWS S3 bucket.
 
 Next I created a brand new "docker-compose.prod13.yml" file for my PostgreSQL v13 database. 
 
