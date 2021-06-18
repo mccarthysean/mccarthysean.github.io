@@ -4,8 +4,8 @@ title: 'Time Series Charts with Dash, Flask, TimescaleDB, and Docker - Part 3'
 tags: [Python, TimescaleDB, Dash, Flask]
 featured_image_thumbnail:
 featured_image: assets/images/posts/2020/python-code-hitesh-choudhary-D9Zow2REm8U-unsplash.jpg
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 This is the third of three articles on TimescaleDB, Flask, and Dash. 

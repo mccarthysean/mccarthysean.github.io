@@ -4,8 +4,8 @@ title: 'Update TimescaleDB Extension with Docker'
 tags: [TimescaleDB, Docker, PostgreSQL, Linux, psql]
 featured_image_thumbnail:
 featured_image: assets/images/posts/2021/timescaledb-logo2.png
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 I really like TimescaleDB as a PostgreSQL-based time series database, and I especially love installing it in Docker containers, just like I would with PostgreSQL. However, I had some trouble updating the TimescaleDB extension version in Docker, so I thought I'd share my solution in case someone else needs it.

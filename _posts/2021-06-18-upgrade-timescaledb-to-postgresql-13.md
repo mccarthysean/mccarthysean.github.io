@@ -4,8 +4,8 @@ title: 'Upgrade TimescaleDB from PostgreSQL 11 to PostgreSQL 13 with Docker'
 tags: [TimescaleDB, Docker, PostgreSQL, Linux, psql]
 featured_image_thumbnail:
 featured_image: assets/images/posts/2021/timescaledb-logo2.png
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 The past few days I've been trying to update my version of TimescaleDB from v1.6.0 to v2.3.0 (see yesterday's post on [updating the TimescaleDB extension]({% post_url 2021-06-17-update-timescaledb-extension-with-docker %})), while also upgrading PostgreSQL from v11 to v13, since TimescaleDB v2.3.0 doesn't support Postgres 11 anymore.

@@ -5,7 +5,7 @@ tags: [TimescaleDB, PGAdmin, Docker]
 featured_image_thumbnail:
 featured_image: assets/images/posts/2020/dog-computer.jpg
 featured: true
-hidden: true
+hidden: false
 ---
 
 In this three-part tutorial, I'll show you how to create a reactive single-page application entirely in Python, featuring dynamic time series charts from Dash/Plotly, on a Flask website with a specialized time series database called TimescaleDB, which itself is based on PostgreSQL. Quite a mouthful, but this is a pretty cool tech stack that is easy to learn and program, as it only uses Python and regular SQL (no JavaScript). So it's an ideal stack for quickly deploying data science applications. 

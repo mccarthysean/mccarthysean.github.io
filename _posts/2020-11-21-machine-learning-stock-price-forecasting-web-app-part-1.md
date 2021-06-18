@@ -4,6 +4,8 @@ title: 'Deploy a Machine Learning, Stock Price Forecasting Web App with Timescal
 tags: [TimescaleDB, PGAdmin, Docker, Python]
 featured_image_thumbnail:
 featured_image: assets/images/posts/2020/gilly-wcWN29NufMQ-unsplash.jpg
+featured: false
+hidden: false
 ---
 
 In this in-depth course, I'm going to show you how to deploy a machine learning model on the web using a very unique and data scientist-friendly tech stack. 
