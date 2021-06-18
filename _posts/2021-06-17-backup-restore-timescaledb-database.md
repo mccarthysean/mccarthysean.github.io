@@ -16,7 +16,7 @@ I created this Docker image myself (see [GitHub](https://github.com/mccarthysean
 
 Below this, I'll show you my `.env` file as well, for the required passwords.
 
-```dockerfile
+```yaml
   backup:
     # image: mccarthysean/timescaledb_backup_s3:latest-13
     image: mccarthysean/timescaledb_backup_s3:13-1.0.8    
