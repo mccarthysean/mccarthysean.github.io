@@ -3,10 +3,11 @@ layout: post
 title: 'Backup a TimescaleDB Database to an AWS S3 Bucket'
 tags: [TimescaleDB, Docker, PostgreSQL, Linux, psql, AWS, S3]
 featured_image_thumbnail:
-featured_image: assets/images/posts/2021/timescaledb-logo2.png
+# featured_image: assets/images/posts/2021/timescaledb-logo2.png
 featured: false
 hidden: false
 ---
+{% include image-caption.html imageurl="/assets/images/posts/2021/timescaledb-logo2.png#small" title="TimescaleDB Logo" caption="TimescaleDB Logo" %}
 
 TimescaleDB is open source software, and they want you to pay for their premium hosted service. Fair enough. Normally I'd just pay the fee, as I do for AWS RDS managed PostgreSQL databases, but their hosted TimescaleDB service is *much* more expensive, so I decided to roll my own in a Docker container. That's easy enough, but I also needed an automated backup Docker service, to save a new backup to an AWS S3 bucket every night.
 
