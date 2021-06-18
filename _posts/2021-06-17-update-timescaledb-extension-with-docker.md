@@ -113,5 +113,5 @@ mydb=# SELECT default_version, installed_version FROM pg_available_extensions wh
 
 TimescaleDB should be updated and working fine now. :)
 
-Cheers,
+Cheers, <br>
 Sean
