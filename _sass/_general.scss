@@ -119,14 +119,16 @@ pre code {
 }
 
 blockquote {
+  // margin: 0 0 1.25em;
+  margin: 1.66667em 0.5em 1.66667em;
+  // text-align: center;
+  text-align: justify;
   color: $gray-darkest;
-  font-family: $font-secondary;
-  font-size: 2rem;
+  // font-family: $font-secondary;
+  // font-size: 2rem;
   line-height: 1.25;
-  margin: 0 0 1.25em;
   padding-top: 45px;
   position: relative;
-  text-align: center;
 }
 
 blockquote:before {
