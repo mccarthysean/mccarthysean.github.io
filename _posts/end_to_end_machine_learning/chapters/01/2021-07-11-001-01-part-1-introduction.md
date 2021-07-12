@@ -21,3 +21,6 @@ By the end of Part 1, you will be able to:
 1. Set up PGAdmin for administering your TimescaleDB or PostgreSQL database
 1. Explain what time series data is and how it differs from regular relational data
 1. Set up a Python-based Flask web app, as the base for our Dash machine learning app
+
+{% include end_to_end_ml_table_of_contents.html %}
+

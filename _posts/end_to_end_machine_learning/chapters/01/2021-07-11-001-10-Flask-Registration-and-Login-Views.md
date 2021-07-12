@@ -303,3 +303,6 @@ Finally, we check whether the user wants us to "remember" her, set the duration 
 If password verification failed, we simply flash a "Invalid email or password" message, and reload the login page.
 
 This chapter is getting a little long, so please see the next chapter for an explanation of the HTML templates to which we referred in the `return render_template("login.html", form=form)` line.
+
+
+{% include end_to_end_ml_table_of_contents.html %}

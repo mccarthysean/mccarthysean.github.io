@@ -200,3 +200,6 @@ Now to create the files we just imported... Create a "dashapp" folder inside you
 Don't worry about the `__init__.py` file--it's just there so Python (and you) know the folder is part of the package. 
 
 In the next chapter, we'll build out the `layout.py` file for the HTML layout. Then in Chapter 5, we'll work on the callbacks for interactivity.
+
+
+{% include end_to_end_ml_table_of_contents.html %}

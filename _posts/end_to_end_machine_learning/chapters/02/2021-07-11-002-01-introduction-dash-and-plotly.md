@@ -25,3 +25,6 @@ First, we're going to build a Dash HTML layout using Dash Bootstrap Components, 
 By the end of Part 2, you will be able to:
 1. Create a Dash HTML layout with Dash Bootstrap Components for effortless mobile responsiveness
 2. Create Dash callbacks to interact with the layout
+
+
+{% include end_to_end_ml_table_of_contents.html %}

@@ -202,3 +202,6 @@ You can check the Traefik logs with:
 `docker service logs traefik_traefik`
 
 Next up, setting up our web app for deployment with Gunicorn and Traefik.
+
+
+{% include end_to_end_ml_table_of_contents.html %}

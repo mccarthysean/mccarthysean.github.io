@@ -96,3 +96,6 @@ class LoginForm(FlaskForm):
 ```
 
 That's it for Flask forms. In the next chapter, we'll create the business logic for the "views" (i.e. the actual login and registration web pages).
+
+
+{% include end_to_end_ml_table_of_contents.html %}

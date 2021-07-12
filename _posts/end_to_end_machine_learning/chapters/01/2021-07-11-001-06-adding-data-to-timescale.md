@@ -218,3 +218,6 @@ GROUP BY
 That's it for this chapter. We downloaded some stock price data from Yahoo Finance, and inserted it into our TimescaleDB database using Python's psycopg2 library.
 
 Next time, we'll fire up a Python Flask web application, to serve as the base for our machine learning app. Then we'll begin integrating Dash for our stock price-forecasting, machine learning, single-page application. Exciting stuff!
+
+
+{% include end_to_end_ml_table_of_contents.html %}

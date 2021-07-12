@@ -22,3 +22,6 @@ By the end of Part 5, you will be able to:
 1. Write unit tests for a Flask app
 2. Write front-end integration tests for a Dash app
 3. Automatically backup your TimescaleDB database to an AWS S3 bucket
+
+
+{% include end_to_end_ml_table_of_contents.html %}

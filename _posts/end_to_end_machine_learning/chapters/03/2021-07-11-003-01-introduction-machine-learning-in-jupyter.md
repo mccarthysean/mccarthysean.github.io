@@ -50,3 +50,6 @@ There's always a risk/reward tradeoff in finance. If one takes very little risk 
 Academics would advise most investors simply to buy diversified index funds (i.e. the whole market), including bonds and stocks, and buy a little bit each month or year (dollar-cost averaging), while minimizing investment fees (i.e. management expense ratio or MER, and trading fees). They note that even experienced fund managers can't consistently "beat the market" year after year, and even if they could, how would you be able to identify such fund managers in advance?
 
 With all that said, let's dare to dream a little bit, and see what machine learning can do for us.
+
+
+{% include end_to_end_ml_table_of_contents.html %}

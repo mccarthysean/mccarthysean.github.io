@@ -340,3 +340,6 @@ That's it! I really hope you've enjoyed the course and learned a few things alon
 
 All the best,
 Sean McCarthy
+
+
+{% include end_to_end_ml_table_of_contents.html %}

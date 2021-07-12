@@ -303,3 +303,6 @@ df_test['profit_cumul'].plot()
 That's it for our machine learning pipeline. I hope you found it useful. If you're getting into machine learning, I'm confident you'll use an ML pipeline like this over and over for your projects, so save a copy somewhere handy. 
 
 Next, in Part 4, we will port this Jupyter Notebook code into our machine learning web app so we can play with it on the website. After that, Part 5 - Testing and Database Backups involves testing our app and automating database backups. Finally, in Part 6, we'll deploy the app to production using Docker Swarm and Traefik. 
+
+
+{% include end_to_end_ml_table_of_contents.html %}

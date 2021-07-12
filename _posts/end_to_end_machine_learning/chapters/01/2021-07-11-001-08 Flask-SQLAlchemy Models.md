@@ -173,3 +173,6 @@ Later on, when the user logs in, the `verify_password` method will be called to 
 ```
 
 That's it for the `models.py` file. Nice to get that out of the way. Next up, user registration and login with some Flask forms.
+
+
+{% include end_to_end_ml_table_of_contents.html %}

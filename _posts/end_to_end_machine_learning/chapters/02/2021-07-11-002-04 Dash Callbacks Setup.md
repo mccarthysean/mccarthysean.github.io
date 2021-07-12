@@ -329,3 +329,6 @@ def download_prices(ticker, name=None, industry=None, period="10y", interval="1d
 Wow, we've accomplished a lot. We've added a row to our layout with two dropdowns, an input field, and a download button. Then we added two callback functions, which quickly escalated in terms of complexity and features. 
 
 In the next chapter, we'll build a beautiful Plotly/Dash chart for the historical stock price data we just downloaded. Interactive data visualization, coming up!
+
+
+{% include end_to_end_ml_table_of_contents.html %}

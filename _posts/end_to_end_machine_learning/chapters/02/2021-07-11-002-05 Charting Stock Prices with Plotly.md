@@ -305,3 +305,6 @@ Then it calls the `get_time_series_chart` function with the new stock ticker, an
 That's it for Chapter 6 on Plotly charting, and that's it for Part 2 as well, which focused on creating a Dash single-page-application (SPA), including a Dash HTML layout, Dash callbacks for interactivity, and beautiful Dash/Plotly interactive data science charts.
 
 In Part 3, we're going to switch gears again and dive into the data science world of exploratory data analysis (EDA), feature engineering and selection, machine learning model fitting and selection, model hyper-parameter tuning, and cross-validation testing. Get ready to build an awesome machine learning pipeline you can take with you to other machine learning projects. 
+
+
+{% include end_to_end_ml_table_of_contents.html %}

@@ -403,3 +403,6 @@ The first two containers won't take long to build, since they're just images to 
 If you need to add a new package in the future, just run, for example `poetry add black` to add the excellent [Black](https://pypi.org/project/black/) package for automatically (and nicely, I might add) formatting your code. To only add Black as a dependency in your development environment, as I do, you'd run `poetry add --dev black`. Very simple. To remove the package, run `poetry remove black`.
 
 Now that we've taken the time to setup our development environment, we can fly through the rest of the course with minimal headaches, focusing on the code and the data science, not the environment.
+
+
+{% include end_to_end_ml_table_of_contents.html %}

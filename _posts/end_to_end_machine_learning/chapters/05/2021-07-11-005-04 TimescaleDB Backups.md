@@ -101,3 +101,6 @@ $ bash /restore.sh
 The above restore operation takes about twice as long (~40 minutes for a 2.4 GB-sized backup file) as the backup operation, but it's worth it because the original database can stay running the whole time so there's no disruption in any services that depend on the database.
 
 This chapter has given you a taste of what's to come in the next part on deployment to production (hint: it's Docker Swarm and Traefik).
+
+
+{% include end_to_end_ml_table_of_contents.html %}

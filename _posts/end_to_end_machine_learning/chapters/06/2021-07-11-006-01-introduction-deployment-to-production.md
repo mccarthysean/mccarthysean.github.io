@@ -19,3 +19,6 @@ By the end of Part 6, you will be able to:
 1. Deploy a Traefik web server for automatic HTTPS, and which works well with Docker Swarm
 2. Deploy your database to the server, along with the automatic backups Docker container
 3. Deploy your web app to the server with multiple nodes, if need be
+
+
+{% include end_to_end_ml_table_of_contents.html %}
