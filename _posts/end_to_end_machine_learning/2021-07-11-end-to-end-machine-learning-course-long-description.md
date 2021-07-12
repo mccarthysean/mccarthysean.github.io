@@ -55,3 +55,5 @@ This is not a beginner course. It's designed for the advanced-beginner -- someon
 ## How long does it take to complete?
 
 Chapters can take anywhere from a few hours to an entire day. The Dash and machine learning chapters will probably be the most challenging to understand.
+
+{% include end_to_end_ml_table_of_contents.html %}
