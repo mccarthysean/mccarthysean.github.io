@@ -304,5 +304,6 @@ That's it for our machine learning pipeline. I hope you found it useful. If you'
 
 Next, in Part 4, we will port this Jupyter Notebook code into our machine learning web app so we can play with it on the website. After that, Part 5 - Testing and Database Backups involves testing our app and automating database backups. Finally, in Part 6, we'll deploy the app to production using Docker Swarm and Traefik. 
 
+Next: <a href="004-01-introduction-machine-learning-in-dash">Part 4 - Machine Learning in Dash</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

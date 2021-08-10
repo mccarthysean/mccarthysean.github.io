@@ -20,5 +20,6 @@ By the end of Part 6, you will be able to:
 2. Deploy your database to the server, along with the automatic backups Docker container
 3. Deploy your web app to the server with multiple nodes, if need be
 
+Next: <a href="006-02-Traefik-Web-Server">Traefik Web Server</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

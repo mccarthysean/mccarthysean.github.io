@@ -289,5 +289,6 @@ def get_layout():
 
 We've now finished the Dash app layout. In Chapter 3, we'll add one big callback to take in all those new layout inputs, perform the machine learning, and return our buy/sell signals chart, and our profits chart.
 
+Next: <a href="004-03-Big-Machine-Learning-Callback">Big Machine Learning Callback</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

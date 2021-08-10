@@ -97,5 +97,6 @@ class LoginForm(FlaskForm):
 
 That's it for Flask forms. In the next chapter, we'll create the business logic for the "views" (i.e. the actual login and registration web pages).
 
+Next: [Flask Registration and Login Views]({% post_url 2021-07-11-001-10-Flask-Registration-and-Login-Views %})
 
 {% include end_to_end_ml_table_of_contents.html %}

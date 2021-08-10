@@ -102,5 +102,6 @@ The above restore operation takes about twice as long (~40 minutes for a 2.4 GB-
 
 This chapter has given you a taste of what's to come in the next part on deployment to production (hint: it's Docker Swarm and Traefik).
 
+Next: <a href="006-01-introduction-deployment-to-production">Part 6 - Deployment to Production</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

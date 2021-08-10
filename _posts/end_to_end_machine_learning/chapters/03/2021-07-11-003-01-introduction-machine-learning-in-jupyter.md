@@ -51,5 +51,6 @@ Academics would advise most investors simply to buy diversified index funds (i.e
 
 With all that said, let's dare to dream a little bit, and see what machine learning can do for us.
 
+Next: <a href="003-02-Exploratory-Data-Analysis">Exploratory Data Analysis</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

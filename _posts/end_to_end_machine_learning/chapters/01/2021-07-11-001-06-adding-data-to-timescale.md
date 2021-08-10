@@ -219,5 +219,6 @@ That's it for this chapter. We downloaded some stock price data from Yahoo Finan
 
 Next time, we'll fire up a Python Flask web application, to serve as the base for our machine learning app. Then we'll begin integrating Dash for our stock price-forecasting, machine learning, single-page application. Exciting stuff!
 
+Next: [Building a Python Flask App]({% post_url 2021-07-11-001-07-flask-app %})
 
 {% include end_to_end_ml_table_of_contents.html %}

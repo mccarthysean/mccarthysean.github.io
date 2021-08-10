@@ -304,5 +304,6 @@ If password verification failed, we simply flash a "Invalid email or password" m
 
 This chapter is getting a little long, so please see the next chapter for an explanation of the HTML templates to which we referred in the `return render_template("login.html", form=form)` line.
 
+Next: [Flask HTML Templates]({% post_url 2021-07-11-001-11-Flask-HTML-Templates %})
 
 {% include end_to_end_ml_table_of_contents.html %}

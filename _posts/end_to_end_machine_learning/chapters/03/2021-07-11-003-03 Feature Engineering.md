@@ -182,5 +182,6 @@ df_test = df.iloc[n_training_records:]
 print(f"df_train.shape: {df_train.shape}")
 print(f"df_test.shape: {df_test.shape}")
 
+Next: <a href="003-04-Training-Testing-and-Tuning-ML-Models">Training, Testing, and Tuning ML Models</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

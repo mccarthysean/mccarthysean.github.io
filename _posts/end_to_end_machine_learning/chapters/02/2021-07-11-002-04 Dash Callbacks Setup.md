@@ -330,5 +330,6 @@ Wow, we've accomplished a lot. We've added a row to our layout with two dropdown
 
 In the next chapter, we'll build a beautiful Plotly/Dash chart for the historical stock price data we just downloaded. Interactive data visualization, coming up!
 
+Next: <a href="002-05-Charting-Stock-Prices-with-Plotly">Charting Stock Prices with Plotly</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

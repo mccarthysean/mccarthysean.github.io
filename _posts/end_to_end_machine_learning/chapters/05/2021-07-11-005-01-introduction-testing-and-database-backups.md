@@ -23,5 +23,6 @@ By the end of Part 5, you will be able to:
 2. Write front-end integration tests for a Dash app
 3. Automatically backup your TimescaleDB database to an AWS S3 bucket
 
+Next: <a href="005-02-Flask-Testing">Flask Testing</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

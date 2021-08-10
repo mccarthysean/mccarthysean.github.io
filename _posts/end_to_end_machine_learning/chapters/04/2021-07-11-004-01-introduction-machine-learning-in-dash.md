@@ -17,5 +17,6 @@ In Part 4, we take the machine learning functions and models we created in a Jup
 By the end of Part 4, you will be able to:
 1. Take a Jupyter Notebook ML model pipeline and deploy it to a Dash website
 
+Next: <a href="004-02-Finish-the-Dash-Layout">Finish the Dash Layout</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

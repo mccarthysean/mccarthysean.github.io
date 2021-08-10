@@ -371,5 +371,6 @@ Take this opportunity to check out your new Dash site in your browser. Type `doc
 
 In the next chapter, we'll add second and third columns to the first row, and use Dash callbacks to populate them, based on the industry chosen in the first dropdown.
 
+Next: <a href="002-04-Dash-Callbacks-Setup">Dash Callbacks Setup</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

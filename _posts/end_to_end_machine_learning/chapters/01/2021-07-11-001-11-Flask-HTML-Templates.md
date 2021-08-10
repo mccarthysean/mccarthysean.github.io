@@ -131,5 +131,6 @@ Now, here's the `login.html` file I promised. Look familiar? The only extra line
 
 That's it for HTML templates, and that's it for Flask, for now. In Part 2, we move on to Dash to create our single-page application for our machine learning model.
 
+Next: [Part 1 Summary]({% post_url 2021-07-11-001-12-Summary %})
 
 {% include end_to_end_ml_table_of_contents.html %}

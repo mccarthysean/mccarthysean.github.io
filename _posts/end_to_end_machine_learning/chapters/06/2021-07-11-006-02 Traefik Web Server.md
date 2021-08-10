@@ -203,5 +203,6 @@ You can check the Traefik logs with:
 
 Next up, setting up our web app for deployment with Gunicorn and Traefik.
 
+Next: <a href="006-03-Production-Deployment-with-Docker-Swarm">Production Deployment with Docker Swarm</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

@@ -306,5 +306,6 @@ That's it for Chapter 6 on Plotly charting, and that's it for Part 2 as well, wh
 
 In Part 3, we're going to switch gears again and dive into the data science world of exploratory data analysis (EDA), feature engineering and selection, machine learning model fitting and selection, model hyper-parameter tuning, and cross-validation testing. Get ready to build an awesome machine learning pipeline you can take with you to other machine learning projects. 
 
+Next: <a href="003-01-introduction-machine-learning-in-jupyter">Part 3 - Machine Learning</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

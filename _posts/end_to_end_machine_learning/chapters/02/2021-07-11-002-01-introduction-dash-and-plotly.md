@@ -26,5 +26,6 @@ By the end of Part 2, you will be able to:
 1. Create a Dash HTML layout with Dash Bootstrap Components for effortless mobile responsiveness
 2. Create Dash callbacks to interact with the layout
 
+Next: <a href="002-02-Dash-Integration-with-Flask">Dash Integration with Flask</a>
 
 {% include end_to_end_ml_table_of_contents.html %}

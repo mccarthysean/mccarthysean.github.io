@@ -201,5 +201,6 @@ Don't worry about the `__init__.py` file--it's just there so Python (and you) kn
 
 In the next chapter, we'll build out the `layout.py` file for the HTML layout. Then in Chapter 5, we'll work on the callbacks for interactivity.
 
+Next: <a href="002-03-Dash-HTML-Layout">Dash HTML Layout</a>
 
 {% include end_to_end_ml_table_of_contents.html %}
