@@ -338,7 +338,7 @@ That's it! I really hope you've enjoyed the course and learned a few things alon
 5. Tested our Flask and Dash functionalities for quality assurance
 6. Deployed our app to production with Traefik and Docker Swarm
 
-All the best,
+All the best,<br>
 Sean McCarthy
 
 
