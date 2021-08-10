@@ -22,5 +22,8 @@ By the end of Part 1, you will be able to:
 1. Explain what time series data is and how it differs from regular relational data
 1. Set up a Python-based Flask web app, as the base for our Dash machine learning app
 
+Next: [Changelog]({% post_url 2021-07-11-001-02-changelog %})<br>
+Prev: [Course Overview]({% post_url 2021-07-11-end-to-end-machine-learning-course-long-description %})
+
 {% include end_to_end_ml_table_of_contents.html %}
 

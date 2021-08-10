@@ -417,4 +417,7 @@ The first two containers won't take long to build, since they're just images to 
 
 Now that we've taken the time to setup our development environment, we can fly through the rest of the course with minimal headaches, focusing on the code and the data science, not the environment.
 
+Next: [Optional VS Code IDE Setup]({% post_url 2021-07-11-001-04-optional-vs-code-docker-setup %})<br>
+Prev: [Changelog]({% post_url 2021-07-11-001-02-changelog %})
+
 {% include end_to_end_ml_table_of_contents.html %}

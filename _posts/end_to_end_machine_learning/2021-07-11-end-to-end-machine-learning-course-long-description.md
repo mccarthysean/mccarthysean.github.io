@@ -56,4 +56,6 @@ This is not a beginner course. It's designed for the advanced-beginner -- someon
 
 Chapters can take anywhere from a few hours to an entire day. The Dash and machine learning chapters will probably be the most challenging to understand.
 
+Next: [Part 1 Introduction]({% post_url 2021-07-11-001-01-part-1-introduction %})<br>
+
 {% include end_to_end_ml_table_of_contents.html %}

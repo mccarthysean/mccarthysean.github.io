@@ -404,5 +404,7 @@ If you need to add a new package in the future, just run, for example `poetry ad
 
 Now that we've taken the time to setup our development environment, we can fly through the rest of the course with minimal headaches, focusing on the code and the data science, not the environment.
 
+Next: [TimescaleDB Intro]({% post_url 2021-07-11-001-05-timescale %})<br>
+Prev: [Development Environment Setup]({% post_url 2021-07-11-001-03-development-environment-setup %})
 
 {% include end_to_end_ml_table_of_contents.html %}
