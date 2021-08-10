@@ -246,7 +246,6 @@ services:
         target: /var/lib/postgresql/data # the location in the container where the data is stored
         read_only: false
     ports:
-      # Use 0.0.0.0 to make this database accessible from "http://localhost:5432"
       - 0.0.0.0:5432:5432
     networks:
       - timescale_network
