@@ -239,7 +239,7 @@ services:
     image: timescale/timescaledb:latest-pg12
     restart: unless-stopped
     env_file:
-      - ../.env
+      - .env
     volumes:
       - type: volume
         source: timescale_volume # the volume name
@@ -256,7 +256,7 @@ services:
     image: "dpage/pgadmin4:latest"
     restart: unless-stopped
     env_file:
-      - ../.env
+      - .env
     environment:
       PGADMIN_LISTEN_PORT: 9000
     ports:
@@ -276,10 +276,10 @@ services:
     build:
       # context: where should docker-compose look for the Dockerfile?
       # i.e. either a path to a directory containing a Dockerfile, or a url to a git repository
-      context: ..
+      context: .
       dockerfile: Dockerfile.dev
     env_file:
-      - ../.env
+      - .env
     environment:
       FLASK_CONFIG: development
       FLASK_ENV: development
@@ -301,7 +301,6 @@ networks:
 volumes:
   timescale_volume:
   pgadmin:
-
 ```
 
 All the above Docker containers require a *.env* file for your secret environment variables, so let's create that now, in the main project directory. Be sure to change the email address, passwords, and AWS credentials to your own. If you don't yet have AWS credentials, we'll cover that in a later chapter.
