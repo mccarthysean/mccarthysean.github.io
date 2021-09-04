@@ -1,6 +1,6 @@
 <details style="margin-bottom: 20px;">
     <summary>Course Table of Contents</summary>
-    <ul>
+    <ul class="end-to-end-ml-toc-ul">
         <li><a href="end-to-end-machine-learning-course-long-description">Course Introduction</a></li>
         <li>Part 1 - Docker, TimescaleDB, and Flask
             <ol>
@@ -45,7 +45,8 @@
         </li>
         <li>Part 5 - Testing and Backups
             <ol>
-                <li><a href="005-01-introduction-testing-and-database-backups">Part 5 - Testing and Database Backups</a></li>
+                <li><a href="005-01-introduction-testing-and-database-backups">Part 5 - Testing and Database Backups</a>
+                </li>
                 <li><a href="005-02-Flask-Testing">Flask Testing</a></li>
                 <li><a href="005-03-Dash-Testing">Dash Testing</a></li>
                 <li><a href="005-04-TimescaleDB-Backups">TimescaleDB Backups</a></li>
@@ -61,3 +62,19 @@
         </li>
     </ul>
 </details>
+
+<script>
+    var myULists = document.getElementsByClassName("end-to-end-ml-toc-ul");
+
+    for (var i = 0; i < myULists.length; i++) {
+        var myList = myULists[i];
+        var listItems = myList.querySelectorAll("li > a");
+
+        for (var j = 0; j < listItems.length; j++) {
+            var a = listItems[j];
+            if ((a.href.includes(window.location.pathname)) && (!a.innerText.includes("you are here"))) {
+                a.innerHTML = `<strong>${a.innerHTML} - <em>you are here</em></strong>`;
+            }
+        }
+    }
+</script>
