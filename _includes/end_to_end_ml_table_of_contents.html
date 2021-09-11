@@ -68,12 +68,13 @@
 
     for (var i = 0; i < myULists.length; i++) {
         var myList = myULists[i];
-        var listItems = myList.querySelectorAll("li > a");
+        var listItems = myList.querySelectorAll("li");
 
         for (var j = 0; j < listItems.length; j++) {
-            var a = listItems[j];
-            if ((a.href.includes(window.location.pathname)) && (!a.innerText.includes("you are here"))) {
-                a.innerHTML = `<strong>${a.innerHTML} - <em>you are here</em></strong>`;
+            var item = listItems[j];
+            var a = item.querySelector("a")
+            if ((a.href.includes(window.location.pathname)) && (!item.innerText.includes("you are here"))) {
+                item.innerHTML = `${item.innerHTML} <i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i><strong><em style="font-size: larger"> you are here</em></strong>`;
             }
         }
     }
