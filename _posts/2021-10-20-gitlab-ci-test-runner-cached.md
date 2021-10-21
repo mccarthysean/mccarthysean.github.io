@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Custom Gitlab CI/CD Test Runner, Cached for Speed with Docker-in-Docker'
+title: 'Custom Gitlab CI/CD Runner, Cached for Speed with Docker-in-Docker'
 tags: [Gitlab, CI/CD, DevOps, Docker, Python, Pytest, FastAPI]
 featured: False
 hidden: false
