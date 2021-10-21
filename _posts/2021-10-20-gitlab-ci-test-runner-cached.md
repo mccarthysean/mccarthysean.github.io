@@ -7,7 +7,7 @@ hidden: false
 ---
 {% include image-caption.html imageurl="/assets/images/posts/2021/gitlab-ci-runner-logo.png#small" title="Gitlab CI Runner" %}
 
-In this article, we'll create a custom [Gitlab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) runner, with a sidecar [Docker-in-Docker](https://hub.docker.com/_/docker) container for building and caching Docker images. 
+In this tutorial, we'll create a custom [Gitlab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) runner, with a sidecar [Docker-in-Docker](https://hub.docker.com/_/docker) container for building and caching Docker images. 
 
 There are many tutorials and resources for running CI/CD jobs with Gitlab CI, but none that show how to run unit tests with Docker Compose, and very few that show exactly how to cache Docker images between Gitlab CI jobs so that Docker doesn't have to keep pulling new images from Docker Hub, slowing down your builds and using up your Docker Hub quota. 
 
