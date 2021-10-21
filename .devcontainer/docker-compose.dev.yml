@@ -1,7 +1,8 @@
 version: '3.7'
 services:
   dev_container:
-    image: jekyll/jekyll
+    # image: jekyll/jekyll
+    image: bretfisher/jekyll-serve
     # build:
     #   # context: where should docker-compose look for the Dockerfile?
     #   # i.e. either a path to a directory containing a Dockerfile, or a url to a git repository
@@ -10,12 +11,10 @@ services:
     # Forwards port 0.0.0.0:4000 from the Docker host (e.g. Windows desktop) 
     # to the dev environment container's port 4000
     volumes:
-      # Mount the root folder that contains .git
       - ..:/workspace
-      - ..:/srv/jekyll
+      # - ..:/srv/jekyll
+      - ..:/site
     ports:
-      # - 0.0.0.0:4000:4000
-      - 4000:4000
+      - "0.0.0.0:4000:4000"
     # Overrides default command so things don't shut down after the process ends.
-    command: sleep infinity 
-    # command: jekyll serve --watch --incremental
+    command: ["sleep", "infinity"]
