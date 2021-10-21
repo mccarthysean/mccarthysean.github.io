@@ -273,7 +273,14 @@ Check that the `$REGISTRATION_TOKEN` variable is set properly through your ".env
 echo $REGISTRATION_TOKEN
 ```
 
-Now for a really long command to register and configure the runner with Gitlab.com. Copy and paste the following, and run it inside the Gitlab Runner container you've just entered:
+Now for a really long command to register and configure the runner with Gitlab.com. The following command sets the defaults for when your Gitlab runner starts up new Docker containers in which to run your CI/CD jobs. It's quite complicated, so here are the steps, one-by-one:
+
+1. Code push to Gitlab repo triggers CI/CD pipeline of jobs
+1. Gitlab runner is constantly polling Gitlab.com for jobs, and finds one matching its tags
+1. Gitlab runner starts up helper containers in which to run jobs
+1. If those jobs use Docker commands (to build/push images or run unit tests), the sidecar Docker-in-Docker service container handles them
+
+Copy and paste the following, and run it inside the Gitlab Runner container you've just entered:
 ```sh
 gitlab-runner --debug register \
     --non-interactive \
