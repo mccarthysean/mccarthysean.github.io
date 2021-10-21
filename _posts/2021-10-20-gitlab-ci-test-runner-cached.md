@@ -430,6 +430,7 @@ You should see four newly-cached images, ready for your next CI/CD jobs:
 1. gitlab-runner-helper:x86_64-...
 1. docker/compose:1.29.2
 
+## Summary
 In this tutorial, you've learned:
 1. How to run a Gitlab CI/CD jobs pipeline
 1. How to use pytest to run unit tests with a Docker Compose container
