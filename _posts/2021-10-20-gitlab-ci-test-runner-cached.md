@@ -7,7 +7,7 @@ hidden: false
 ---
 {% include image-caption.html imageurl="/assets/images/posts/2021/gitlab-ci-runner-logo.png#small" title="Gitlab CI Runner" %}
 
-In this article, we'll create a custom Gitlab CI runner, with a sidecar Docker-in-Docker container for building and caching Docker images. 
+In this article, we'll create a custom [Gitlab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) runner, with a sidecar [Docker-in-Docker](https://hub.docker.com/_/docker) container for building and caching Docker images. 
 
 There are many tutorials and resources for running CI/CD jobs with Gitlab CI, but none that show how to run unit tests with Docker Compose, and very few that show exactly how to cache Docker images between Gitlab CI jobs so that Docker doesn't have to keep pulling new images from Docker Hub, slowing down your builds and using up your Docker Hub quota. 
 
@@ -16,9 +16,12 @@ Benefits of this setup:
 2. Keep your secret data locked down
 3. Cache Docker images for speed and efficiency
 
-Let's bootstrap a Python FastAPI setup that uses Docker Compose and Pytest. 
+This article assumes you have Docker installed on your computer. If not, now is the time to [install](https://www.docker.com/products/docker-desktop) it. Why Docker? Read more [here](https://www.docker.com/why-docker).
 
-Insert your Gitlab repository URL here (e.g. https://gitlab.com/mccarthysean):
+## Gitlab repo setup
+Let's bootstrap an excellent Python [FastAPI](https://fastapi.tiangolo.com/) setup from [this course](https://testdriven.io/blog/fastapi-crud/). This setup includes two Docker containers (FastAPI and PostgreSQL), so it uses Docker Compose. It also has pytest unit tests ready to go, perfect for a CI/CD job pipeline.
+
+Copy the TestDriven.io [Github repo](https://github.com/testdrivenio/fastapi-crud-async) to your own Gitlab account with the following steps. If you don't yet have a [Gitlab](https://gitlab.com/) account, now is the time to sign up. First export your Gitlab repository URL (e.g. https://gitlab.com/mccarthysean):
 ```sh
 export MY_GITLAB=
 ```
