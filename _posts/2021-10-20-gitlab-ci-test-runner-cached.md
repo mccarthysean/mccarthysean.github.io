@@ -431,8 +431,9 @@ Congrats, you now have the fastest, cheapest, most secure CI/CD pipeline around,
 
 In case you didn't notice, you also have an [asynchronous FastAPI/PostgreSQL website](https://testdriven.io/blog/fastapi-crud/) up and running. Check out that tutorial next!
 
-Run FastAPI locally (same as the Gitlab CI pipeline does) with (e.g. IMAGE=registry.gitlab.com/mccarthysean/gitlab_test_runner:my_image):
+Deploy FastAPI locally (same as the Gitlab CI pipeline does) with the following:
 ```sh
+# e.g. export IMAGE=registry.gitlab.com/mccarthysean/gitlab_test_runner:my_image
 export IMAGE=
 docker-compose up -d --build
 ```
