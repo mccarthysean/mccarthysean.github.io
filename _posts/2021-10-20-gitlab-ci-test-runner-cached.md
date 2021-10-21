@@ -412,9 +412,9 @@ docker ps
 
 Go back into your CI/CD pipeline, or jobs, and restart the job. Either that, or push a superficial change to your Gitlab repo, to trigger a new pipeline of jobs. 
 
-Your job should now be running through both:
+Your job should now be running, using both of the following custom containers that you own:
 1. Your custom Gitlab runner
-2. Your dind Docker-in-Docker service container
+1. Your dind Docker-in-Docker service container
 
 The "build" job will take longer this time because it will reinstall the Python packages from scratch, but then the Docker-built image will be stored in the Docker-in-Docker container's persistent volume, so next time it will be *much* faster. Your "test" job should be lightning fast since it uses the cached images from the build job.
 
