@@ -271,7 +271,7 @@ pytz = "^2020.1"
 PyYAML = "^5.3.1"
 dash-bootstrap-components = "^0.10.6"
 email-validator = "^1.1.1"
-yfinance = "^0.1.55"
+yfinance = "^0.1.64"
 scikit-learn = "^0.23.2"
 ipykernel = "^5.4.2"
 matplotlib = "^3.3.3"
@@ -293,7 +293,7 @@ percy = "^2.0.2"
 beautifulsoup4 = "^4.9.3"
 
 [build-system]
-requires = ["poetry>=0.12"]
+requires = ["poetry>=1.1.11"]
 build-backend = "poetry.masonry.api"
 ```
 
