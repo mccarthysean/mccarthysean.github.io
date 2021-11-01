@@ -119,6 +119,7 @@ class User(UserMixin, db.Model):
     """Create a User model for the "public.users" database table"""
 
     __tablename__ = "users"
+    __table_args__ = {"schema": "public"}
 
     id = db.Column(INTEGER, primary_key=True)
     email = db.Column(TEXT, unique=True, nullable=False)
@@ -170,6 +171,52 @@ Later on, when the user logs in, the `verify_password` method will be called to 
     def verify_password(self, password):
         """Check if hashed password matches actual password"""
         return check_password_hash(self.password_hash, password)
+```
+
+Let's also add our two stock ticker and stock price tables that we created manually in the TimescaleDB chapter. This way, SQLAlchemy's `create_all` and `drop_all` functions work correctly.
+```python
+
+
+class StockTicker(db.Model):
+    """
+    Model for public.stock_tickers table,
+    so it can be created with db.create_all(),
+    or destroyed with db.drop_all()
+    """
+    __tablename__ = "stock_tickers"
+    __table_args__ = {"schema": "public"}
+
+    ticker = db.Column(TEXT, primary_key=True)
+    name = db.Column(TEXT)
+    industry = db.Column(TEXT)
+
+    stock_prices = relationship("StockPrice", back_populates="ticker_rel")
+
+
+class StockPrice(db.Model):
+    """
+    Model for public.stock_prices table,
+    so it can be created with db.create_all(),
+    or destroyed with db.drop_all()
+    """
+    __tablename__ = "stock_prices"
+    __table_args__ = {"schema": "public"}
+    
+    time = db.Column(TIMESTAMP, primary_key=True, nullable=False)
+    
+    ticker = db.Column(
+        TEXT,
+        db.ForeignKey("public.stock_tickers.ticker"),
+        nullable=True
+    )
+    ticker_rel = relationship("StockTicker", back_populates="stock_prices")
+
+    open = db.Column(NUMERIC)
+    high = db.Column(NUMERIC)
+    low = db.Column(NUMERIC)
+    close = db.Column(NUMERIC)
+    close_adj = db.Column(NUMERIC)
+    volume = db.Column(NUMERIC)
 ```
 
 That's it for the `models.py` file. Nice to get that out of the way. Next up, user registration and login with some Flask forms.

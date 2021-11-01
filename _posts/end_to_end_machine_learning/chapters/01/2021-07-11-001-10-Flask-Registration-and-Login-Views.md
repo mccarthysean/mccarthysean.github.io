@@ -118,7 +118,7 @@ def register_views(app):
         if form.validate_on_submit():
             # Check whether the password entered matches the password in the database
             user = User.query.filter_by(email=form.email.data.lower()).first()
-            if user.verify_password(form.password.data):
+            if user and user.verify_password(form.password.data):
                 # Save some details about this login, and previous logins
                 user.last_login_at = datetime.datetime.utcnow()
                 user.login_count = (

@@ -35,7 +35,7 @@ To create a Flask application, let's start from the outermost entrypoint, or the
 
 from app import create_app
 
-app = create_app()
+app, _ = create_app()
 ```
 
 The `wsgi.py` file is looking in a folder called `app` for a function called `create_app`, so let's create an `app` folder to house our Flask application. Inside the app folder, as for all Python packages, create an `__init__.py` file:
@@ -232,9 +232,9 @@ def create_app():
     database.init_app(app) # PostgreSQL db with psycopg2
 
     # For the Dash app
-    register_dashapps(app)
+    dashapp = register_dashapp(app)
 
-    return app
+    return app, dashapp
 ```
 
 
