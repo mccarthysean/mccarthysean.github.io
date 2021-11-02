@@ -160,13 +160,13 @@ Let's create a special TimescaleDB "Hypertable" and insert some data to play wit
 
 In PGAdmin, if you're not already there, under the "Tools" menu, click on "Query Tool" and type the following SQL to create two database tables in the default "public" schema:
 ```sql
-CREATE TABLE stock_tickers (
+CREATE TABLE IF NOT EXISTS stock_tickers (
   ticker TEXT PRIMARY KEY,
   name TEXT,
   industry TEXT
 );
 
-CREATE TABLE stock_prices (
+CREATE TABLE IF NOT EXISTS stock_prices (
   time TIMESTAMP WITHOUT TIME ZONE NOT NULL,
   ticker TEXT,
   open NUMERIC,
