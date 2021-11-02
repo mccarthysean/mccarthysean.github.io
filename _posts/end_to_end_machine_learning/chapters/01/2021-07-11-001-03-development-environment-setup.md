@@ -220,7 +220,7 @@ visitor==0.1.3
 wcwidth==0.2.5
 werkzeug==1.0.1
 wtforms==2.3.3
-yfinance==0.1.59
+yfinance==0.1.64
 zipp==3.4.1; python_version < "3.8"
 zope.event==4.5.0
 zope.interface==5.4.0
