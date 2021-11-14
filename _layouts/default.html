@@ -2,67 +2,69 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% if site.plugins_dir contains 'jekyll-seo-tag' %}
-        {% include head-seo.html %}
-    {% else %}
-        <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.name | escape }}{% endif %}</title>
-        <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
-        <link rel="canonical" href="{{ page.url | replace:'index.html', '' | absolute_url }}">
-    {% endif %}
+  {% if site.plugins_dir contains 'jekyll-seo-tag' %}
+  {% include head-seo.html %}
+  {% else %}
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.name | escape }}{% endif %}</title>
+  <meta name="description"
+    content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html', '' | absolute_url }}">
+  {% endif %}
 
-    <!-- Site Favicon -->
-    <link rel="shortcut icon" href="https://mccarthysean.dev/assets/images/favicon.ico" type="image/x-icon" />
+  <!-- Site Favicon -->
+  <link rel="shortcut icon" href="https://mccarthysean.dev/assets/images/favicon.ico" type="image/x-icon" />
 
-    <!-- Font Embed Code -->
-	<link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i|Karla:400,400i,700,700i" rel="stylesheet">
+  <!-- Font Embed Code -->
+  <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i|Karla:400,400i,700,700i"
+    rel="stylesheet">
 
-    <!-- Bootstrap v4.6 -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
+  <!-- Bootstrap v4.6 -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
 
-    <!-- CSS Styles -->
-    <link href="{{ site.baseurl }}/assets/css/style.css" rel="stylesheet">
-    <link href="{{ site.baseurl }}/assets/css/prism.css" rel="stylesheet">
-    
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- CSS Styles -->
+  <link href="{{ site.baseurl }}/assets/css/style.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/assets/css/prism.css" rel="stylesheet">
+
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
 
 <body class="{{ layout }}">
-    <div id="page" class="site">
-        {% include header.html %}
-        <div id="content" class="site-content fadeInDown delay_075s">
-            <div class="inner-wide">
-                {{ content }}
+  <div id="page" class="site">
+    {% include header.html %}
+    <div id="content" class="site-content fadeInDown delay_075s">
+      <div class="inner-wide">
+        {{ content }}
 
-                {% if paginator.total_posts > site.paginate %}
-                {% if page.class == 'tag-template' %}
-                {% include tag-pagination.html %}
-                {% endif %}
-                {% endif %}
+        {% if paginator.total_posts > site.paginate %}
+        {% if page.class == 'tag-template' %}
+        {% include tag-pagination.html %}
+        {% endif %}
+        {% endif %}
 
-                {% if site.mailchimp_url and page.class == 'tag-template' %}
-                {% include newsletter-box.html %}
-                {% endif %}
-                {% include footer.html %}
-            </div><!-- .inner-wide -->
-        </div><!-- .site-content -->
-    </div><!-- .site -->
+        {% if site.mailchimp_url and page.class == 'tag-template' %}
+        {% include newsletter-box.html %}
+        {% endif %}
+        {% include footer.html %}
+      </div><!-- .inner-wide -->
+    </div><!-- .site-content -->
+  </div><!-- .site -->
 
-    {% include analytics.html %}
-    <!-- Javascript Assets -->
-    <script src="{{ site.baseurl }}/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/custom.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/prism.js"></script>
-    
-    <!-- JQuery (full version, not slim) and Bootstrap -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  {% include analytics.html %}
+  <!-- Javascript Assets -->
+  <script src="{{ site.baseurl }}/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/plugins.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/custom.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/prism.js"></script>
+
+  <!-- JQuery (full version, not slim) and Bootstrap -->
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script> -->
 </body>
 

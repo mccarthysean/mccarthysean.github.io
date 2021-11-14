@@ -45,6 +45,8 @@ navigation:
     url: /contact
   - text: Search
     url: /search
+  - text: Packages
+    url: /packages
 
 # Required Plugins
 plugins_dir:
