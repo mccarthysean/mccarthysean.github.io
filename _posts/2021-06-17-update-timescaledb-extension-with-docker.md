@@ -81,6 +81,36 @@ networks:
     external: true
 ```
 
+Here's a template for my ".env" environment variables file:
+```shell
+# For the Postgres/TimescaleDB init/default setup.
+# Create postgres user, set password, name the host in Docker,
+# set the port, create the 'ijack' database, and set the (default)
+# location for data
+# The docker-compose.yml file specifies this as timescale
+POSTGRES_HOST=timescale
+POSTGRES_PORT=
+POSTGRES_DATABASE=
+PGDATA=/var/lib/postgresql/data
+POSTGRES_USER=
+# POSTGRES_PASSWORD initializes the database password for TimescaleDB
+POSTGRES_PASSWORD=
+
+# AWS RDS
+POSTGRES_HOST_RDS=
+POSTGRES_PORT_RDS=
+POSTGRES_DATABASE_RDS=
+POSTGRES_USER_RDS=
+POSTGRES_PASSWORD_RDS=
+
+# For AWS
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+
+# For TimescaleDB backups
+AWS_DEFAULT_REGION=
+```
+
 Connect to the running Docker container and start psql immediately:
 ```shell
 docker exec -it <container> psql -X -U postgres
