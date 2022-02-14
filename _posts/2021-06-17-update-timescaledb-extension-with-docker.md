@@ -85,8 +85,7 @@ Here's a template for my ".env" environment variables file:
 ```shell
 # For the Postgres/TimescaleDB init/default setup.
 # Create postgres user, set password, name the host in Docker,
-# set the port, create the 'ijack' database, and set the (default)
-# location for data
+# set the port, create the database, and set the (default) location for data.
 # The docker-compose.yml file specifies this as timescale
 POSTGRES_HOST=timescale
 POSTGRES_PORT=
