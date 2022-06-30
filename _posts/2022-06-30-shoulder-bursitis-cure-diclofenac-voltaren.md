@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 'Is Diclofenac (Voltaren) the cure for bursitis?'
+description: 'I may have found a cure for bursitis, or at least a really effective treatment. I hope this helps others suffering from bursitis, which is a really painful, long-lasting condition.'
 tags: [bursitis, covid, omicron]
 featured_image_thumbnail:
 # featured_image: assets/images/posts/2021/timescaledb-logo2.png
