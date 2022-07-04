@@ -29,5 +29,11 @@ Have I just discovered the cure for bursitis??? In all my research, not once did
 
 The real test will be tonight since the pain is always worst at nighttime... Wish me luck! 🤞🤞🤞🤞🤞
 
+**Update July 4, 2022**
+
+So, it seems Voltaren maybe isn't the *cure* for bursitis, but it definitely helps. Lately I've started using both Voltaren *and* naproxen at the same time, and sometimes even using acetaminophen as well. That, plus ice packs from time to time, seems to be about the best a person can do during the *very slow healing process*... Oh, and a cortisone injection as well. That seemed to help quite a bit as well. 
+
+Best of luck everyone!
+
 Cheers, <br>
 Sean
