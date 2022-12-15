@@ -212,7 +212,7 @@ version: '3.8'
 
 services:
   gitlab_runner:
-    image: gitlab/gitlab-runner:alpine-v14.3.2
+    image: gitlab/gitlab-runner:alpine3.14-v15.3.3
     container_name: gitlab_runner
     env_file: .env
     # There is NO need for this container to have root privileges!
@@ -289,7 +289,7 @@ gitlab-runner --debug register \
     --url $GITLAB_URL \
     --registration-token $REGISTRATION_TOKEN \
     --executor docker \
-    --description "My Custom Docker Runner" \
+    --description "My Custom Docker Runner - $(date)" \
     --docker-image "docker:stable" \
     --tag-list "dind,fastapi" \
     --run-untagged=true \
@@ -359,7 +359,7 @@ services:
     restart: unless-stopped
 
   gitlab_runner:
-    image: gitlab/gitlab-runner:alpine-v14.3.2
+    image: gitlab/gitlab-runner:alpine3.14-v15.3.3
     container_name: gitlab_runner
     env_file: .env
     # There is NO need for this container to have root privileges!
@@ -377,8 +377,10 @@ services:
     # NEW!
     networks:
       - gitlab_runner_network
+    # NEW!
     depends_on:
       - dind
+    # NEW!
     # Legacy link to service with hostname "dind" and alias "docker".
     # This is absolutely necessary.
     links:
@@ -388,6 +390,7 @@ volumes:
   # For persisting the config with the registered runners
   runner_config_volume:
     name: runner_config_volume
+
   # NEW!
   # For cached Docker images
   dind_volume:
@@ -444,7 +447,7 @@ In case you didn't notice, you also have an [asynchronous FastAPI/PostgreSQL web
 Deploy FastAPI locally (same as the Gitlab CI pipeline does) with the following:
 ```sh
 # e.g. export IMAGE=registry.gitlab.com/mccarthysean/gitlab_test_runner:my_image
-export IMAGE=
+export IMAGE=<your image name>
 docker-compose up -d --build
 ```
 
