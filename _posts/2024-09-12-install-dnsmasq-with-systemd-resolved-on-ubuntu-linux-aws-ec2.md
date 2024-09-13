@@ -10,7 +10,7 @@ hidden: false
 This article shows you how to install, configure, and run `dnsmasq` as your local DNS cache on Ubuntu Linux, on an AWS EC2 server. This way you're not running too many DNS lookups from, say, your web app to your managed AWS RDS database, and seeing weird errors like "Temporary failure in name resolution"...
 
 ## Update - Consider Using Unbound Instead!
-After I wrote this article, I discovered [Unbound](https://www.nlnetlabs.nl/projects/unbound/about/) and it's much easier, and it *just works*. Consider reading [this article on Unbound]({% post_url 2024-09-13-install-unbound-on-ubuntu-linux-aws-ec2 %}) first.
+After I wrote this article, I discovered [Unbound](https://unbound.docs.nlnetlabs.nl/en/latest/) and it's much easier, and it *just works*. Consider reading [this article on Unbound]({% post_url 2024-09-13-install-unbound-on-ubuntu-linux-aws-ec2 %}) first.
 
 # Run all of the following in order 
 * It's pretty much a script, but best to do it one line at a time

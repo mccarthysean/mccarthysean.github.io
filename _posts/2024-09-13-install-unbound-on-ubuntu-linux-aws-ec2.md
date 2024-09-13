@@ -7,7 +7,7 @@ featured_image_thumbnail:
 featured: false
 hidden: false
 ---
-This article shows you how to install, configure, and run [Unbound](https://www.nlnetlabs.nl/projects/unbound/about/) as your local DNS cache on Ubuntu Linux, on an AWS EC2 server. This way you're not running too many DNS lookups from, say, your web app to your managed AWS RDS database, and seeing weird errors like "Temporary failure in name resolution"...
+This article shows you how to install, configure, and run [Unbound](https://unbound.docs.nlnetlabs.nl/en/latest/) as your local DNS cache on Ubuntu Linux, on an AWS EC2 server. This way you're not running too many DNS lookups from, say, your web app to your managed AWS RDS database, and seeing weird errors like "Temporary failure in name resolution"...
 
 I previously wrote an [article]({% post_url 2024-09-12-install-dnsmasq-with-systemd-resolved-on-ubuntu-linux-aws-ec2 %}) about how to install dnsmasq, working together with systemd-resolved, but Unbound is so much easier, and it *just works*.
 
