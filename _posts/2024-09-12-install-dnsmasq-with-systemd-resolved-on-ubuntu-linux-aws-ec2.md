@@ -136,12 +136,7 @@ Set the dnsmasq DNS cache as the default DNS resolver.
 Note: You must suppress the default DNS resolver that DHCP provides.
 To do this, change or create the /etc/dhcp/dhclient.conf file.
 ```bash
-sudo bash -c "echo 'supersede domain-name-servers 127.0.0.1, 169.254.169.253;' >> /etc/dhcp/dhclient.conf"
-```
-
-Or… the same thing a bit different:
-```bash
-echo "supersede domain-name-servers 127.0.0.1, ${NAMESERVER};" | sudo tee -a /etc/dhcp/dhclient.conf > /dev/null` 
+echo "supersede domain-name-servers 127.0.0.1, ${NAMESERVER};" | sudo tee /etc/dhcp/dhclient.conf > /dev/null 
 ```
 
 Quick check to see if DNS is working right now
