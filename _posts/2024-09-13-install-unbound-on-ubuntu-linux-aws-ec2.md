@@ -1,20 +1,20 @@
 ---
 layout: post
-title: 'Install Local DNS Cache (dnsmasq) on AWS EC2 Ubuntu Linux, with Systemd-Resolved as well'
+title: 'Install Local DNS Cache (Unbound) on AWS EC2 Ubuntu Linux'
 tags: [AWS, EC2, Ubuntu, Linux, DNS]
 featured_image_thumbnail:
 # featured_image: assets/images/posts/2021/timescaledb-logo2.png
 featured: false
 hidden: false
 ---
-This article shows you how to install, configure, and run `dnsmasq` as your local DNS cache on Ubuntu Linux, on an AWS EC2 server. This way you're not running too many DNS lookups from, say, your web app to your managed AWS RDS database, and seeing weird errors like "Temporary failure in name resolution"...
+This article shows you how to install, configure, and run [Unbound](https://www.nlnetlabs.nl/projects/unbound/about/) as your local DNS cache on Ubuntu Linux, on an AWS EC2 server. This way you're not running too many DNS lookups from, say, your web app to your managed AWS RDS database, and seeing weird errors like "Temporary failure in name resolution"...
 
-## Update - Consider Using Unbound Instead!
-After I wrote this article, I discovered [Unbound](https://www.nlnetlabs.nl/projects/unbound/about/) and it's much easier, and it *just works*. Consider reading [this article on Unbound]({% post_url 2024-09-13-install-unbound-on-ubuntu-linux-aws-ec2 %}) first.
+I previously wrote an [article]({% post_url 2024-09-12-install-dnsmasq-with-systemd-resolved-on-ubuntu-linux-aws-ec2 %}) about how to install dnsmasq, working together with systemd-resolved, but Unbound is so much easier, and it *just works*.
+
+Credit to [this tutorial at Yandex](https://yandex.cloud/en/docs/tutorials/infrastructure-management/local-dns-cach)
 
 # Run all of the following in order 
 * It's pretty much a script, but best to do it one line at a time
-* The following works for Ubuntu, unlike the instructions here: https://repost.aws/knowledge-center/dns-resolution-failures-ec2-linux
 
 Check whether this is to run on VPC (default) or EC2 classic and set NAMESERVER accordingly
 ```bash
@@ -34,45 +34,35 @@ echo "NAMESERVER = $NAMESERVER"
 
 You should see something like `NAMESERVER = 169.254.169.253` (the main AWS Route53 nameserver)
 
-Install the dnsmasq package and DHCP client
+Install the Unbound package, the `dig` package, and the DHCP client.
 ```bash
-sudo apt update && sudo apt install -y dnsmasq isc-dhcp-client
+sudo apt-get update -y
+sudo apt-get install unbound dnsutils isc-dhcp-client -y
 ```
 
-Create the required User and Group
+Create a configuration file
 ```bash
-groupadd -r dnsmasq
-useradd -r -g dnsmasq dnsmasq
-```
+echo -e "server:\n\
+    port: 53\n\
+    interface: 127.0.0.1\n\
+    access-control: 127.0.0.0/8 allow\n\
+    do-ip4: yes\n\
+    do-ip6: no\n\
+    do-udp: yes\n\
+    do-tcp: yes\n\
+    num-threads: 2\n\
+    num-queries-per-thread: 1024\n\
+    hide-identity: yes\n\
+    hide-version: yes\n\
+    prefetch: yes\n\
+    verbosity: 1\n\
+" | sudo tee /etc/unbound/unbound.conf.d/unbound.local.conf > /dev/null
 
-Set dnsmasq.conf configuration
-```bash
-echo -e "# Server Configuration\n\
-listen-address=127.0.0.1\n\
-port=53\n\
-bind-interfaces\n\
-user=dnsmasq\n\
-group=dnsmasq\n\
-# I think /var/run/dnsmasq.pid is for a different flavour of AWS Linux EC2\n\
-#pid-file=/var/run/dnsmasq.pid\n\
-pid-file=/run/dnsmasq/dnsmasq.pid\n\n\
-# Name resolution options\n\
-resolv-file=/etc/resolv.dnsmasq\n\
-cache-size=500\n\
-neg-ttl=60\n\
-domain-needed\n\
-bogus-priv" | sudo tee /etc/dnsmasq.conf > /dev/null
 ```
 
 Check it
 ```bash
-cat /etc/dnsmasq.conf
-```
-
-Populate /etc/resolv.dnsmasq
-```bash
-sudo bash -c "echo 'nameserver ${NAMESERVER}' > /etc/resolv.dnsmasq" && \
-echo "/etc/resolv.dnsmasq contents:" && cat /etc/resolv.dnsmasq
+cat /etc/unbound/unbound.conf.d/unbound.local.conf
 ```
 
 Create /etc/dhcp3/dhclient.conf
@@ -92,25 +82,25 @@ Check it
 cat /etc/dhcp3/dhclient.conf
 ```
 
-Make the localhost 127.0.0.1 the main (local) DNS resolver
+Make the localhost 127.0.0.1 the main (local) DNS resolver, if you have systemd-resolved installed
 ```bash
 echo "Old /etc/systemd/resolved.conf contents: " && cat /etc/systemd/resolved.conf
 sudo sed -i 's/^#DNS=.*$/DNS=127.0.0.1/' /etc/systemd/resolved.conf
 ```
 
-Use dnsmasq instead of systemd-resolved (i.e. we don't want systemd-resolved to be the DNS Stub Listener)
+Use Unbound instead of systemd-resolved (i.e. we don't want systemd-resolved to be the DNS Stub Listener)
 ```bash
 sudo sed -i 's/^#DNSStubListener=yes.*$/DNSStubListener=no/' /etc/systemd/resolved.conf
 sudo sed -i 's/^#DNSStubListener=no.*$/DNSStubListener=no/' /etc/systemd/resolved.conf
 
 echo "New /etc/systemd/resolved.conf contents: " && cat /etc/systemd/resolved.conf
 sudo systemctl reload-or-restart systemd-resolved
-sudo systemctl status systemd-resolved
 ```
 
 Check if it works at this time
 ```bash
 dig aws.amazon.com
+sudo systemctl status systemd-resolved
 ```
 
 For dnsmasq to work, iptables mustn't block the DHCP port
@@ -118,20 +108,27 @@ For dnsmasq to work, iptables mustn't block the DHCP port
 sudo ufw allow bootps
 ```
 
-Create the PID directory and file
+Stop systemd-resolved and dnsmasq first, if they're running
 ```bash
-sudo mkdir -p /run/dnsmasq
-sudo touch /run/dnsmasq/dnsmasq.pid
-sudo chown -R dnsmasq:dnsmasq /run/dnsmasq
-ls -la /run/dnsmasq
-cat /run/dnsmasq/dnsmasq.pid
+sudo systemctl stop dnsmasq.service
+sudo systemctl disable dnsmasq.service
+
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
+
+sudo systemctl status systemd-resolved
+sudo systemctl status dnsmasq.service
 ```
 
-Enable and Start dnsmasq service
+Edit the /etc/resolv.conf file manually and ensure it contains the following line at the top:
 ```bash
-sudo systemctl status dnsmasq.service
-sudo systemctl enable  dnsmasq.service 
-sudo systemctl reload-or-restart dnsmasq.service
+nameserver 127.0.0.1
+```
+
+Start Unbound
+```bash
+sudo systemctl start unbound.service
+sudo systemctl status unbound.service
 ```
 
 Test the service and configure dhclient accordingly.
@@ -142,17 +139,21 @@ To do this, change or create the /etc/dhcp/dhclient.conf file.
 echo "supersede domain-name-servers 127.0.0.1, ${NAMESERVER};" | sudo tee /etc/dhcp/dhclient.conf > /dev/null 
 ```
 
-Quick check to see if DNS is working right now
-```bash
-dig aws.amazon.com @127.0.0.1
-```
-
 Apply the change (or… `sudo systemctl restart network`)
 ```bash
 sudo dhclient
 ```
 
-By default, systemd-resolved creates a symbolic link at /etc/resolv.conf that points to a local DNS stub (127.0.0.53). You need to remove this link and replace it with a standard /etc/resolv.conf file.
+Test that DNS lookups work now!
+```bash
+dig aws.amazon.com @127.0.0.1
+dig google.com @127.0.0.1 | grep -B3 Query
+dig microsoft.com
+```
+
+# Optional Step
+
+By default, systemd-resolved creates a symbolic link at /etc/resolv.conf that points to a local DNS stub (127.0.0.53). You can remove this link and replace it with a standard /etc/resolv.conf file if you like.
 ```bash
 echo "/etc/resolv.conf contents:" && cat /etc/resolv.conf
 ls -la /etc/resolv.conf
@@ -181,18 +182,6 @@ To undo the above and make the file *mutable* again, run `sudo chattr -i /etc/re
 Check the permissions, and whether it's a file. Previously it was a symlink.
 ```bash
 ls -la /etc/resolv.conf
-```
-
-Ensure both services are enabled
-```bash
-sudo systemctl enable systemd-resolved
-sudo systemctl enable dnsmasq.service
-```
-
-Reload or restart them for good measure
-```bash
-sudo systemctl reload-or-restart systemd-resolved
-sudo systemctl reload-or-restart dnsmasq.service
 ```
 
 Verify dnsmasq works correctly
