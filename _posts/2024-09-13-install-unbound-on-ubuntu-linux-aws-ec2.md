@@ -42,7 +42,7 @@ sudo apt-get update -y
 sudo apt-get install unbound dnsutils isc-dhcp-client -y
 ```
 
-Create a configuration file
+Create a configuration file, including the Amazon DNS resolver for resolving hosts on your private VPC.
 ```bash
 echo -e "server:\n\
     port: 53\n\
@@ -58,8 +58,14 @@ echo -e "server:\n\
     hide-version: yes\n\
     prefetch: yes\n\
     verbosity: 1\n\
+    # Root hints (can be updated by unbound-anchor)\n\
+    # root-hints: "/var/lib/unbound/root.hints"\n\
+\n\
+forward-zone:\n\
+    name: \".\"\n\
+    # Amazon's DNS resolver (likely 169.254.169.253)\n\
+    forward-addr: $NAMESERVER\n\
 " | sudo tee /etc/unbound/unbound.conf.d/unbound.local.conf > /dev/null
-
 ```
 
 Check it
@@ -95,6 +101,11 @@ Enable DNS security (highly recommended)
 sudo sed -i 's/^#DNSSEC=yes.*$/DNSSEC=yes/' /etc/systemd/resolved.conf
 ```
 
+Manually update the root trust anchor for DNSSEC validation
+```bash
+sudo unbound-anchor -a "/var/lib/unbound/root.key"
+```
+
 Use Unbound instead of systemd-resolved (i.e. we don't want systemd-resolved to be the DNS Stub Listener)
 ```bash
 sudo sed -i 's/^#DNSStubListener=yes.*$/DNSStubListener=no/' /etc/systemd/resolved.conf
@@ -120,8 +131,7 @@ Stop systemd-resolved and dnsmasq first, if they're running
 sudo systemctl stop dnsmasq.service
 sudo systemctl disable dnsmasq.service
 
-sudo systemctl stop systemd-resolved
-sudo systemctl disable systemd-resolved
+sudo systemctl restart systemd-resolved
 
 sudo systemctl status systemd-resolved
 sudo systemctl status dnsmasq.service
