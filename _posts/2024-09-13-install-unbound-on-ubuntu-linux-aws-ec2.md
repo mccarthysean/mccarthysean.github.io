@@ -65,9 +65,6 @@ forward-zone:\n\
     name: \".\"\n\
     # Amazon's DNS resolver (likely 169.254.169.253)\n\
     forward-addr: $NAMESERVER\n\
-\n\
-# root key file, automatically updated\n\
-auto-trust-anchor-file: "/var/lib/unbound/root.key"\n\
 " | sudo tee /etc/unbound/unbound.conf.d/unbound.local.conf > /dev/null
 ```
 
@@ -89,6 +86,11 @@ cat /var/lib/unbound/root.key
 Check the Unbound configuration files for syntax errors or misconfigurations
 ```bash
 sudo unbound-checkconf
+```
+
+Reload the Unbound config
+```bash
+sudo systemctl reload unbound.service
 ```
 
 Create /etc/dhcp3/dhclient.conf
