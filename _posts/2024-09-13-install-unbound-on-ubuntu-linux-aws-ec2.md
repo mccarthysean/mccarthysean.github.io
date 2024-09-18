@@ -36,10 +36,15 @@ echo "NAMESERVER = $NAMESERVER"
 
 You should see something like `NAMESERVER = 169.254.169.253` (the main AWS Route53 nameserver)
 
-Install the Unbound package, the `dig` package, and the DHCP client.
+Install the Unbound package, Unbound-Anchor package for DNS security, the `dig` package, and the DHCP client.
 ```bash
 sudo apt-get update -y
-sudo apt-get install unbound dnsutils isc-dhcp-client -y
+sudo apt-get install unbound unbound-anchor dnsutils isc-dhcp-client -y
+```
+
+Manually update the trust anchor
+```bash
+wget https://data.iana.org/root-anchors/root-anchors.xml
 ```
 
 Create a configuration file, including the Amazon DNS resolver for resolving hosts on your private VPC.
