@@ -87,7 +87,7 @@ If you then `dig com. SOA +dnssec` you should see the AD flag there. If things g
 
 Check the Unbound configuration files for syntax errors or misconfigurations
 ```bash
-sudo unbound-checkconf
+unbound-checkconf
 ```
 
 Reload the Unbound config
