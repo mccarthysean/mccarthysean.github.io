@@ -48,50 +48,87 @@ sudo apt-get install unbound unbound-anchor dnsutils isc-dhcp-client -y
 Create a configuration file, including the Amazon DNS resolver for resolving hosts on your private VPC.
 
 ```bash
-echo -e "server:\n\
+echo -e "\n\
+server:\n\
+    # Listen for queries on port 53\n\
     port: 53\n\
+    # Listen for DNS queries only on the loopback interface (localhost). This means it's only accessible from the local machine\n\
     interface: 127.0.0.1\n\
+    # Allow DNS queries from the 127.0.0.0/8 address range (localhost). Restrict access only to the local machine\n\
     access-control: 127.0.0.0/8 allow\n\
+    # Set the logging level for validation. Level 2 provides detailed logs for DNSSEC validation\n\
+    # Change this if you don't want to see so many log messages\n\
+    val-log-level: 2\n\
+    # Level 2 provides detailed logging information\n\
+    verbosity: 2\n\
+    \n\
     do-ip4: yes\n\
     do-ip6: no\n\
     do-udp: yes\n\
     do-tcp: yes\n\
     num-threads: 2\n\
     num-queries-per-thread: 1024\n\
+    # Hide the server's identity in responses\n\
     hide-identity: yes\n\
     hide-version: yes\n\
+    # Enables DNS prefetching to improve response times for frequently requested records\n\
     prefetch: yes\n\
-    verbosity: 1\n\
     # Root hints (can be updated by unbound-anchor)\n\
     # root-hints: "/var/lib/unbound/root.hints"\n\
-    # enable DNSSEC\n\
+    \n\
+    # Configures Unbound to treat amazonaws.com as a private domain, which might affect how queries for this domain are handled\n\
+    # private-domain: "amazonaws.com"\n\
+    \n\
+    # The following line includes additional configuration files from the\n\
+    # /etc/unbound/unbound.conf.d directory.\n\
+    # include-toplevel: "/etc/unbound/unbound.conf.d/*.conf"\n\
+    \n\
+    # The following line will configure unbound to perform cryptographic\n\
+    # DNSSEC validation using the root trust anchor.\n\
+    # Thich is crucial for DNSSEC validation.\n\
     # auto-trust-anchor-file: "/var/lib/unbound/root.key"\n\
 \n\
+# Defines a zone where DNS queries are forwarded to another DNS server\n\
 forward-zone:\n\
+    # Forward all DNS queries (for any domain) to the specified DNS server. \n\
+    # Unbound will not perform any DNS resolution itself but will forward all requests\n\
+    # to the server defined in the forward-addr directive.\n\
+    # While Unbound itself is not resolving the queries, it will cache the responses it gets\n\
+    # from the AWS VPC private resolver. Subsequent queries for the same domain within the cache's\n\
+    # TTL (Time-To-Live) will be served from Unbound's local cache rather than being forwarded again.\n\
     name: \".\"\n\
-    # Amazon's DNS resolver (likely 169.254.169.253)\n\
+    # Amazon's VPC private DNS resolver (likely 169.254.169.253)\n\
     forward-addr: $NAMESERVER\n\
-" | sudo tee /etc/unbound/unbound.conf.d/unbound.local.conf > /dev/null
-```
-
-Check it
-
-```bash
-cat /etc/unbound/unbound.conf.d/unbound.local.conf
+\n\
+# remote-control:\n\
+  # control-enable: yes\n\
+  # by default the control interface is is 127.0.0.1 and ::1 and port 8953\n\
+  # it is possible to use a unix socket too\n\
+  # control-interface: /run/unbound.ctl\n\
+" | sudo tee /etc/unbound/unbound.conf > /dev/null && \
+echo "" && cat /etc/unbound/unbound.conf
 ```
 
 Manually update the root trust anchor for DNSSEC validation
 
 ```bash
 sudo mv /var/lib/unbound/root.key /var/lib/unbound/root.key.bak
-sudo unbound-anchor -a "/var/lib/unbound/root.key"
+sudo unbound-anchor -c  -v -a "/var/lib/unbound/root.key"
 ```
 
-Check it to ensure it exists now
+<!-- Alternatively...
+
+```sh
+sudo curl -o /var/lib/unbound/root.key https://data.iana.org/root-anchors/root.key
+sudo chown unbound:unbound /var/lib/unbound/root.key
+sudo chmod 644 /var/lib/unbound/root.key
+``` -->
+
+<!-- Check it to ensure it exists now
 
 ```bash
 cat /var/lib/unbound/root.key
-```
+``` -->
 
 Ensure the `unbound` user can access the required /var/lib folder
 
@@ -101,15 +138,10 @@ sudo chmod -R 755 /var/lib/unbound
 ls -la /var/lib/unbound
 ```
 
-## Check DNSSEC DNS Security
-
-Run `dig com. SOA +dnssec` and you should see the AD flag there. If things go wrong, try the unbound option `val-log-level: 2` that will log explanations why the DNSSEC validation fails (one line per failed query). See [this link](https://nlnetlabs.nl/documentation/unbound/howto-anchor/) for more.
-
 Check the Unbound configuration files for syntax errors or misconfigurations
 
 ```bash
 unbound-checkconf -f /etc/unbound/unbound.conf
-unbound-checkconf -f /etc/unbound/unbound.conf.d/unbound.local.conf
 ```
 
 Reload the Unbound config
@@ -122,7 +154,17 @@ sudo systemctl status unbound.service
 Check the logs for the service
 
 ```sh
-journalctl -u unbound -f
+journalctl --unit unbound --lines 1000 --pager-end --follow
+```
+
+## Check DNSSEC DNS Security
+
+Run the following and you should see the `ad` flag there. If things go wrong, try the unbound option `val-log-level: 2` that will log explanations why the DNSSEC validation fails (one line per failed query). See [this link](https://nlnetlabs.nl/documentation/unbound/howto-anchor/) for more.
+
+```sh
+dig amazonaws.com
+dig @8.8.8.8 com. SOA +dnssec
+dig +dnssec A www.dnssec.cz
 ```
 
 Create /etc/dhcp3/dhclient.conf
