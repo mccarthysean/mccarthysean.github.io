@@ -83,6 +83,8 @@ Check it to ensure it exists now
 cat /var/lib/unbound/root.key
 ```
 
+If you then `dig com. SOA +dnssec` you should see the AD flag there. If things go wrong, try the unbound option `val-log-level: 2` that will log explanations why the DNSSEC validation fails (one line per failed query). See [this link](https://nlnetlabs.nl/documentation/unbound/howto-anchor/) for more.
+
 Check the Unbound configuration files for syntax errors or misconfigurations
 ```bash
 sudo unbound-checkconf
