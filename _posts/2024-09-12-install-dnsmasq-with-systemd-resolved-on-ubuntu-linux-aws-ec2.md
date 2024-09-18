@@ -12,6 +12,8 @@ This article shows you how to install, configure, and run `dnsmasq` as your loca
 ## Update - Consider Using Unbound Instead!
 After I wrote this article, I discovered [Unbound](https://unbound.docs.nlnetlabs.nl/en/latest/) and it's much easier, and it *just works*. Consider reading [this article on Unbound]({% post_url 2024-09-13-install-unbound-on-ubuntu-linux-aws-ec2 %}) first.
 
+Here's a link to the [Unbound documentation](https://unbound.docs.nlnetlabs.nl/en/latest/), which is really helpful.
+
 # Run all of the following in order 
 * It's pretty much a script, but best to do it one line at a time
 * The following works for Ubuntu, unlike the instructions here: https://repost.aws/knowledge-center/dns-resolution-failures-ec2-linux
