@@ -98,6 +98,11 @@ echo "Old /etc/systemd/resolved.conf contents: " && cat /etc/systemd/resolved.co
 sudo sed -i 's/^#DNS=.*$/DNS=127.0.0.1/' /etc/systemd/resolved.conf
 ```
 
+Enable DNS security (highly recommended)
+```bash
+sudo sed -i 's/^#DNSSEC=yes.*$/DNSSEC=yes/' /etc/systemd/resolved.conf
+```
+
 Use dnsmasq instead of systemd-resolved (i.e. we don't want systemd-resolved to be the DNS Stub Listener)
 ```bash
 sudo sed -i 's/^#DNSStubListener=yes.*$/DNSStubListener=no/' /etc/systemd/resolved.conf
