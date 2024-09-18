@@ -13,7 +13,7 @@ Here's a link to the [Unbound documentation](https://unbound.docs.nlnetlabs.nl/e
 
 I previously wrote an [article]({% post_url 2024-09-12-install-dnsmasq-with-systemd-resolved-on-ubuntu-linux-aws-ec2 %}) about how to install dnsmasq, working together with systemd-resolved, but Unbound is so much easier, and it *just works*.
 
-Credit to [this tutorial at Yandex](https://yandex.cloud/en/docs/tutorials/infrastructure-management/local-dns-cach)
+Credit to [this tutorial at Yandex](https://yandex.cloud/en/docs/tutorials/infrastructure-management/local-dns-cache)
 
 # Run all of the following in order 
 * It's pretty much a script, but best to do it one line at a time
