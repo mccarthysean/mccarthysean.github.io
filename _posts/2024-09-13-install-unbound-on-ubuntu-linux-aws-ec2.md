@@ -42,11 +42,6 @@ sudo apt-get update -y
 sudo apt-get install unbound unbound-anchor dnsutils isc-dhcp-client -y
 ```
 
-Manually update the trust anchor
-```bash
-wget https://data.iana.org/root-anchors/root-anchors.xml
-```
-
 Create a configuration file, including the Amazon DNS resolver for resolving hosts on your private VPC.
 ```bash
 echo -e "server:\n\
@@ -70,12 +65,30 @@ forward-zone:\n\
     name: \".\"\n\
     # Amazon's DNS resolver (likely 169.254.169.253)\n\
     forward-addr: $NAMESERVER\n\
+\n\
+# root key file, automatically updated\n\
+auto-trust-anchor-file: "/var/lib/unbound/root.key"\n\
 " | sudo tee /etc/unbound/unbound.conf.d/unbound.local.conf > /dev/null
 ```
 
 Check it
 ```bash
 cat /etc/unbound/unbound.conf.d/unbound.local.conf
+```
+
+Manually update the root trust anchor for DNSSEC validation
+```bash
+sudo unbound-anchor -a "/var/lib/unbound/root.key"
+```
+
+Check it to ensure it exists now
+```bash
+cat /var/lib/unbound/root.key
+```
+
+Check the Unbound configuration files for syntax errors or misconfigurations
+```bash
+sudo unbound-checkconf
 ```
 
 Create /etc/dhcp3/dhclient.conf
@@ -104,11 +117,6 @@ sudo sed -i 's/^#DNS=.*$/DNS=127.0.0.1/' /etc/systemd/resolved.conf
 Enable DNS security (highly recommended)
 ```bash
 sudo sed -i 's/^#DNSSEC=yes.*$/DNSSEC=yes/' /etc/systemd/resolved.conf
-```
-
-Manually update the root trust anchor for DNSSEC validation
-```bash
-sudo unbound-anchor -a "/var/lib/unbound/root.key"
 ```
 
 Use Unbound instead of systemd-resolved (i.e. we don't want systemd-resolved to be the DNS Stub Listener)
