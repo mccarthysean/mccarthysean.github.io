@@ -103,7 +103,7 @@ ls -la /var/lib/unbound
 
 ## Check DNSSEC DNS Security
 
-If you then `dig com. SOA +dnssec` you should see the AD flag there. If things go wrong, try the unbound option `val-log-level: 2` that will log explanations why the DNSSEC validation fails (one line per failed query). See [this link](https://nlnetlabs.nl/documentation/unbound/howto-anchor/) for more.
+Run `dig com. SOA +dnssec` and you should see the AD flag there. If things go wrong, try the unbound option `val-log-level: 2` that will log explanations why the DNSSEC validation fails (one line per failed query). See [this link](https://nlnetlabs.nl/documentation/unbound/howto-anchor/) for more.
 
 Check the Unbound configuration files for syntax errors or misconfigurations
 
@@ -117,6 +117,12 @@ Reload the Unbound config
 ```bash
 sudo systemctl reload-or-restart unbound.service
 sudo systemctl status unbound.service
+```
+
+Check the logs for the service
+
+```sh
+journalctl -u unbound -f
 ```
 
 Create /etc/dhcp3/dhclient.conf
