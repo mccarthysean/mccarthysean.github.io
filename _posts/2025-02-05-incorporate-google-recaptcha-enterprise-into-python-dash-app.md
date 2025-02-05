@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Use Google reCAPTCHA in Plotly Dash App'
+title: 'Use Google reCAPTCHA Enterprise v3 (invisible) in Plotly Dash app'
 tags: [Python, Dash, reCAPTCHA]
 featured_image_thumbnail:
 # featured_image: assets/images/posts/2021/timescaledb-logo2.png
