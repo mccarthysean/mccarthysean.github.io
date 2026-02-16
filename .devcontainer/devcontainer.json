@@ -42,6 +42,10 @@
 	// 	// "ms-azuretools.vscode-docker", 
 	// 	// "eamodio.gitlens",
 	// ],
+	"initializeCommand": "mkdir -p ${localEnv:HOME}/.claude-docker 2>/dev/null || true",
+	"mounts": [
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.claude-docker,target=/root/.claude,type=bind"
+	],
 	"settings": {
 		// "python.pythonPath": "/app/venv/bin/python",
 		// "python.linting.pylintEnabled": true,
